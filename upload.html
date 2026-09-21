@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report a found item</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>I found something</h1>
+
+  <form id="itemForm">
+    <select id="category" required>
+      <option value="">Select category</option>
+      <option>Bottle</option>
+      <option>Keys</option>
+      <option>ID card</option>
+      <option>Bag</option>
+      <option>Phone</option>
+      <option>Other</option>
+    </select>
+
+    <select id="colour" required>
+      <option value="">Select colour</option>
+      <option>Black</option>
+      <option>White</option>
+      <option>Blue</option>
+      <option>Red</option>
+      <option>Green</option>
+      <option>Other</option>
+    </select>
+
+    <select id="shape" required>
+      <option value="">Select shape</option>
+      <option>Round</option>
+      <option>Rectangular</option>
+      <option>Square</option>
+      <option>Other</option>
+    </select>
+
+    <input id="brand" placeholder="Brand (optional)">
+    <textarea id="description" placeholder="Description" required></textarea>
+    <input type="date" id="foundDate" required>
+    <input id="handedOverAt" placeholder="Where did you hand it over?" required>
+    <input id="secretDetail" placeholder="Private detail only the owner would know" required>
+    <input type="file" id="photo" accept="image/*" required>
+
+    <button type="submit" id="submitBtn">Submit</button>
+    <p id="message"></p>
+  </form>
+
+  <script type="module" src="js/upload.js"></script>
+</body>
+</html>
