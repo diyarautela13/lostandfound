@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Found items</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="wide">
+  <h1>Found items</h1>
+  <a href="upload.html">I found something</a>
+<body class="wide">
+  <div id="navbar"></div>
+  <h1>Found items</h1>
+  <div class="filters">
+    <select id="filterCategory">
+      <option value="">All categories</option>
+      <option>Bottle</option>
+      <option>Keys</option>
+      <option>ID card</option>
+      <option>Bag</option>
+      <option>Phone</option>
+      <option>Other</option>
+    </select>
+
+    <select id="filterColour">
+      <option value="">All colours</option>
+      <option>Black</option>
+      <option>White</option>
+      <option>Blue</option>
+      <option>Red</option>
+      <option>Green</option>
+      <option>Other</option>
+    </select>
+
+    <select id="filterShape">
+      <option value="">All shapes</option>
+      <option>Round</option>
+      <option>Rectangular</option>
+      <option>Square</option>
+      <option>Other</option>
+    </select>
+
+    <select id="sortDate">
+      <option value="desc">Newly found</option>
+      <option value="asc">Oldest found</option>
+    </select>
+  </div>
+
+  <p id="status"></p>
+  <div id="items"></div>
+
+  <script type="module" src="js/listing.js"></script>
+</body>
+</html>

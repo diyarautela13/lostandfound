@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Item details</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="listing.html">&larr; Back to all items</a>
+
+  <div id="itemDetails"></div>
+
+  <h2>Is this yours?</h2>
+  <p>Fill in the form so we can verify that you are the owner.</p>
+
+  <form id="claimForm">
+    <input id="claimName" placeholder="Your full name" required>
+    <input id="claimRoll" placeholder="College roll number" required>
+    <input id="claimContact" placeholder="Phone or email" required>
+    <textarea id="claimAnswer" placeholder="Describe something only the owner would know (marks, stickers, contents, etc.)" required></textarea>
+    <button type="submit" id="claimBtn">Submit claim</button>
+    <p id="claimMessage"></p>
+  </form>
+
+  <script type="module" src="js/item.js"></script>
+</body>
+</html>

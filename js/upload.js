@@ -1,3 +1,4 @@
+import { requireLogin } from "./auth.js";
 import { db } from "./firebase.js";
 import {
   collection,
@@ -29,8 +30,17 @@ const form = document.getElementById("itemForm");
 const submitBtn = document.getElementById("submitBtn");
 const message = document.getElementById("message");
 
+let currentUser = null;
+requireLogin((user) => {
+  currentUser = user;
+});
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  if (!currentUser) {
+    message.textContent = "Please sign in first.";
+    return;
+  }
 
   const file = document.getElementById("photo").files[0];
   if (!file || !file.type.startsWith("image/")) {
@@ -54,16 +64,27 @@ form.addEventListener("submit", async (e) => {
       shape: document.getElementById("shape").value,
       brand: document.getElementById("brand").value.trim(),
       description: document.getElementById("description").value.trim(),
-      handedOverAt: document.getElementById("handedOverAt").value.trim(),
       photoURL: photoURL,
       foundAt: Timestamp.fromDate(new Date(document.getElementById("foundDate").value)),
       createdAt: serverTimestamp(),
+      finderId: currentUser.uid,
       status: "available"
     });
 
     // private detail goes in a separate collection, same id as the item
     await setDoc(doc(db, "itemSecrets", itemRef.id), {
       secretDetail: document.getElementById("secretDetail").value.trim()
+    });
+
+    // pickup location is kept separate, so only approved claimants can see it
+    await setDoc(doc(db, "itemPickup", itemRef.id), {
+      handedOverAt: document.getElementById("handedOverAt").value.trim(),
+      finderId: currentUser.uid
+    });
+
+    // the finder's email comes from their account, for the email notification later
+    await setDoc(doc(db, "finderContacts", itemRef.id), {
+      finderEmail: currentUser.email
     });
 
     message.textContent = "Item submitted successfully!";

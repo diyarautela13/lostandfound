@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>College Lost &amp; Found</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="hero">
+    <h1>College Lost &amp; Found</h1>
+    <p>Lost something on campus? Found something?</p>
+
+    <div id="signedOut" style="display:none">
+      <p>Sign in or sign up to get started.</p>
+      <button id="loginBtn">Sign in with Google</button>
+    </div>
+
+    <div id="signedIn" style="display:none">
+      <p id="welcome"></p>
+      <button id="continueBtn">Continue</button>
+      <button id="logoutBtn">Sign out</button>
+    </div>
+
+    <p id="loginMessage"></p>
+  </div>
+
+  <script type="module" src="js/index.js"></script>
+</body>
+</html>
