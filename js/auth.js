@@ -39,7 +39,7 @@ function showNav(user) {
   if (!nav) return;
   nav.innerHTML = "";
 
-  const links = [
+    const links = [
     ["Home", "listing.html"],
     ["I found something", "upload.html"],
     ["Messages", "messages.html"],

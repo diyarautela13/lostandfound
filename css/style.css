@@ -2,7 +2,9 @@ body { font-family: Arial, sans-serif; max-width: 480px; margin: 30px auto; padd
 form { display: flex; flex-direction: column; gap: 12px; }
 input, select, textarea, button { padding: 10px; font-size: 16px; }
 button { cursor: pointer; }
+
 body.wide { max-width: 900px; }
+
 .filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
 #items { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
 .card { border: 1px solid #ccc; border-radius: 8px; overflow: hidden; }
@@ -10,26 +12,46 @@ body.wide { max-width: 900px; }
 .card .info { padding: 10px; }
 .card h3 { margin: 0 0 6px; }
 .card p { margin: 2px 0; font-size: 14px; }
+
 #itemDetails img { width: 100%; max-height: 320px; object-fit: contain; background: #f4f4f4; border-radius: 8px; }
 #itemDetails p { margin: 6px 0; }
+
 #navbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 10px 0; border-bottom: 1px solid #ddd; margin-bottom: 16px; }
 .nav-links { display: flex; gap: 16px; }
 .nav-user { display: flex; align-items: center; gap: 8px; }
 .nav-user img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+
 .landing { text-align: center; }
 .hero { margin-top: 120px; }
+
 #profileHeader { display: flex; align-items: center; gap: 16px; }
 #profileHeader img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
 #myItems a { display: block; padding: 8px 0; }
+.avatar { width: 80px; height: 80px; border-radius: 50%; }
+
 .claim .result { font-weight: bold; }
 .status-pending { border-color: #e0a800; }
 .status-approved { border-color: #2e9e4f; }
 .status-rejected { border-color: #d64545; }
+
 .hint { font-size: 13px; color: #666; margin-top: 8px; }
-.avatar { width: 80px; height: 80px; border-radius: 50%; }
+
 #chatMessages { display: flex; flex-direction: column; gap: 6px; max-height: 400px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin: 12px 0; }
 .msg { max-width: 70%; padding: 8px 12px; border-radius: 14px; }
 .msg.mine { align-self: flex-end; background: #d2e9ff; }
 .msg.theirs { align-self: flex-start; background: #f0f0f0; }
 #chatForm { display: flex; gap: 8px; }
 #chatForm input { flex: 1; }
+
+.chatRow { display: flex; justify-content: space-between; align-items: center; border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin-bottom: 10px; }
+.chatRow p { margin: 4px 0 0; color: #555; font-size: 14px; }
+
+.msgRow { display: flex; align-items: center; gap: 4px; position: relative; }
+.msgRow.mine { justify-content: flex-end; }
+.msgRow.theirs { justify-content: flex-start; }
+
+.msgMenuBtn {
+  background: none; border: none; color: #999; font-size: 16px;
+  cursor: pointer; padding: 0 4px; visibility: hidden;
+}
+.msgRow:hover .msgMenuBtn { visibility: visible; }

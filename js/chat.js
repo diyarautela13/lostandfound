@@ -10,7 +10,9 @@ import {
   orderBy,
   onSnapshot,
   serverTimestamp,
-  updateDoc
+  updateDoc,
+  deleteDoc,
+  arrayUnion
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const claimId = new URLSearchParams(window.location.search).get("claimId");
@@ -21,10 +23,10 @@ const input = document.getElementById("chatInput");
 
 let currentUser = null;
 let otherUserId = null;
+let chatRef = null;
 
 async function ensureChat(claim) {
-  // the chat document uses the claim's own id, so there's exactly one thread per claim
-  const chatRef = doc(db, "chats", claimId);
+  chatRef = doc(db, "chats", claimId);
   const chatSnap = await getDoc(chatRef);
 
   if (!chatSnap.exists()) {
@@ -32,18 +34,51 @@ async function ensureChat(claim) {
       claimId: claimId,
       itemId: claim.itemId,
       participants: [claim.finderId, claim.claimantId],
+      hiddenFor: [],
       createdAt: serverTimestamp()
     });
   }
   return chatRef;
 }
 
-function renderMessage(msg) {
-  const div = document.createElement("div");
-  div.className = "msg " + (msg.senderId === currentUser.uid ? "mine" : "theirs");
-  div.textContent = msg.text;
-  messagesDiv.appendChild(div);
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+async function deleteWholeChat() {
+  if (!confirm("Remove this chat from your Chats list? The other person will still see it.")) return;
+  await updateDoc(chatRef, { hiddenFor: arrayUnion(currentUser.uid) });
+  window.location.href = "chats.html";
+}
+
+async function deleteOneMessage(msgId) {
+  if (!confirm("Delete this message for everyone?")) return;
+  try {
+    await deleteDoc(doc(chatRef, "messages", msgId));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function renderMessage(msg, msgId) {
+  const wrap = document.createElement("div");
+  wrap.className = "msgRow " + (msg.senderId === currentUser.uid ? "mine" : "theirs");
+
+  const bubble = document.createElement("div");
+  bubble.className = "msg " + (msg.senderId === currentUser.uid ? "mine" : "theirs");
+  bubble.textContent = msg.text;
+  wrap.appendChild(bubble);
+
+  // only the sender can delete their own message
+  if (msg.senderId === currentUser.uid) {
+    const delBtn = document.createElement("button");
+    delBtn.className = "msgMenuBtn";
+    delBtn.textContent = "⋮";
+    delBtn.title = "Delete this message";
+    delBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      deleteOneMessage(msgId);
+    });
+    wrap.appendChild(delBtn);
+  }
+
+  messagesDiv.appendChild(wrap);
 }
 
 async function start(user) {
@@ -63,7 +98,6 @@ async function start(user) {
   }
   const claim = claimSnap.data();
 
-  // only the finder and the claimant may open this chat
   if (user.uid !== claim.finderId && user.uid !== claim.claimantId) {
     headerDiv.textContent = "You don't have access to this chat.";
     form.style.display = "none";
@@ -81,15 +115,19 @@ async function start(user) {
   const link = document.createElement("a");
   link.href = "profile.html?id=" + otherUserId;
   link.textContent = "View profile";
-  headerDiv.append(h1, link);
 
-  const chatRef = await ensureChat(claim);
+  const deleteChatBtn = document.createElement("button");
+  deleteChatBtn.textContent = "Delete entire chat";
+  deleteChatBtn.addEventListener("click", () => deleteWholeChat());
 
-  // live updates: new messages appear instantly for both people
+  headerDiv.append(h1, link, deleteChatBtn);
+
+  await ensureChat(claim);
+
   const q = query(collection(chatRef, "messages"), orderBy("createdAt", "asc"));
   onSnapshot(q, (snap) => {
     messagesDiv.innerHTML = "";
-    snap.forEach((d) => renderMessage(d.data()));
+    snap.forEach((d) => renderMessage(d.data(), d.id));
   });
 
   form.addEventListener("submit", async (e) => {
@@ -105,7 +143,8 @@ async function start(user) {
     });
     await updateDoc(chatRef, {
       lastMessage: text,
-      lastMessageAt: serverTimestamp()
+      lastMessageAt: serverTimestamp(),
+      hiddenFor: []
     });
   });
 }

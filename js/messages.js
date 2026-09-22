@@ -223,7 +223,77 @@ async function renderSent(claim) {
   addChatButton(card, claim.id);
   sentDiv.appendChild(card);
 }
+// =====================================================
+// Part 3: my conversations
+// =====================================================
+const chatsListDiv = document.getElementById("chatsList");
+const chatsStatusP = document.getElementById("chatsStatus");
 
+async function loadChats(user) {
+  chatsStatusP.textContent = "Loading...";
+  chatsListDiv.innerHTML = "";
+
+  try {
+    const q = query(collection(db, "chats"), where("participants", "array-contains", user.uid));
+    const snap = await getDocs(q);
+    let chats = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+
+    chats = chats.filter((c) => !(c.hiddenFor || []).includes(user.uid));
+    chats.sort((a, b) =>
+      (b.lastMessageAt ? b.lastMessageAt.toMillis() : 0) -
+      (a.lastMessageAt ? a.lastMessageAt.toMillis() : 0)
+    );
+
+    chatsStatusP.textContent = chats.length ? "" : "No conversations yet.";
+
+    for (const chat of chats) {
+      await renderChatRow(chat, user);
+    }
+  } catch (err) {
+    console.error(err);
+    chatsStatusP.textContent = "Could not load conversations.";
+  }
+}
+
+async function renderChatRow(chat, user) {
+  const otherId = chat.participants.find((id) => id !== user.uid);
+  const otherSnap = await getDoc(doc(db, "users", otherId));
+  const otherName = otherSnap.exists() ? otherSnap.data().name : "Student";
+
+  const itemSnap = await getDoc(doc(db, "items", chat.itemId));
+  const itemLabel = itemSnap.exists() ? itemSnap.data().category : "Item";
+
+  const row = document.createElement("div");
+  row.className = "chatRow";
+
+  const info = document.createElement("div");
+  info.style.cursor = "pointer";
+  info.addEventListener("click", () => {
+    window.location.href = "chat.html?claimId=" + chat.claimId;
+  });
+
+  const name = document.createElement("strong");
+  name.textContent = otherName + " — " + itemLabel;
+
+  const preview = document.createElement("p");
+  preview.textContent = chat.lastMessage || "No messages yet.";
+
+  info.append(name, preview);
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    if (!confirm("Remove this chat from your list? The other person will still see it.")) return;
+    await updateDoc(doc(db, "chats", chat.id), {
+      hiddenFor: arrayUnion(user.uid)
+    });
+    row.remove();
+  });
+
+  row.append(info, deleteBtn);
+  chatsListDiv.appendChild(row);
+}
 requireLogin((user) => {
   loadReceived(user);
   loadSent(user);
