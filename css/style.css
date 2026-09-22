@@ -25,3 +25,11 @@ body.wide { max-width: 900px; }
 .status-pending { border-color: #e0a800; }
 .status-approved { border-color: #2e9e4f; }
 .status-rejected { border-color: #d64545; }
+.hint { font-size: 13px; color: #666; margin-top: 8px; }
+.avatar { width: 80px; height: 80px; border-radius: 50%; }
+#chatMessages { display: flex; flex-direction: column; gap: 6px; max-height: 400px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin: 12px 0; }
+.msg { max-width: 70%; padding: 8px 12px; border-radius: 14px; }
+.msg.mine { align-self: flex-end; background: #d2e9ff; }
+.msg.theirs { align-self: flex-start; background: #f0f0f0; }
+#chatForm { display: flex; gap: 8px; }
+#chatForm input { flex: 1; }

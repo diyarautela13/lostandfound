@@ -7,15 +7,15 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
   doc,
-  getDoc,
-  setDoc,
-  serverTimestamp
+  getDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const provider = new GoogleAuthProvider();
 
-export function login() {
-  return signInWithPopup(auth, provider);
+// opens the Google popup, does NOT create a profile
+export async function login() {
+  const result = await signInWithPopup(auth, provider);
+  return result.user;
 }
 
 export async function logout() {
@@ -27,22 +27,10 @@ export function watchUser(callback) {
   onAuthStateChanged(auth, callback);
 }
 
-// creates the user's profile document the first time they sign in
-async function saveUserProfile(user) {
-  try {
-    const ref = doc(db, "users", user.uid);
-    const snap = await getDoc(ref);
-    if (!snap.exists()) {
-      await setDoc(ref, {
-        name: user.displayName || "",
-        email: user.email,
-        photoURL: user.photoURL || "",
-        createdAt: serverTimestamp()
-      });
-    }
-  } catch (err) {
-    console.error("Could not save profile:", err);
-  }
+// true if this Google account has no profile document yet
+export async function isNewUser(user) {
+  const snap = await getDoc(doc(db, "users", user.uid));
+  return !snap.exists();
 }
 
 // navigation bar: needs <div id="navbar"></div> in the page
@@ -82,15 +70,22 @@ function showNav(user) {
   nav.appendChild(btn);
 }
 
-// use on every page except index.html: sends signed-out visitors to the home page
+// use on every page except index.html and signup.html
 export function requireLogin(callback) {
   onAuthStateChanged(auth, async (user) => {
     if (!user) {
       window.location.href = "index.html";
       return;
     }
+    if (window.location.pathname.endsWith("signup.html")) {
+      callback(user);
+      return;
+    }
+    if (await isNewUser(user)) {
+      window.location.href = "signup.html";
+      return;
+    }
     showNav(user);
-    await saveUserProfile(user);
     callback(user);
   });
 }

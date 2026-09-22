@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Complete your profile</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Complete your profile</h1>
+  <p>This information helps other students recognize and contact you.</p>
+
+  <form id="signupForm">
+    <input id="fullName" placeholder="Full name" required>
+    <input id="rollNo" placeholder="College roll number" required>
+    <select id="department" required>
+      <option value="">Select department</option>
+      <option>CSE</option>
+      <option>ECE</option>
+      <option>Mechanical</option>
+      <option>Civil</option>
+      <option>Other</option>
+    </select>
+    <input id="year" placeholder="Year (e.g. 2nd year)" required>
+    <input id="phone" placeholder="Phone number" required>
+
+    <button type="submit" id="signupBtn">Save and continue</button>
+    <p id="signupMessage"></p>
+  </form>
+
+  <script type="module" src="js/signup.js"></script>
+</body>
+</html>

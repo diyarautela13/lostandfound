@@ -28,6 +28,15 @@ function newestFirst(list) {
   );
 }
 
+function addChatButton(card, claimId) {
+  const chatBtn = document.createElement("button");
+  chatBtn.textContent = "Chat";
+  chatBtn.addEventListener("click", () => {
+    window.location.href = "chat.html?claimId=" + claimId;
+  });
+  card.appendChild(chatBtn);
+}
+
 // =====================================================
 // Part 1: claims other people made on items I found
 // =====================================================
@@ -65,7 +74,14 @@ async function renderReceived(claim, user) {
   title.textContent = item ? `${item.category} (${item.colour}, ${item.shape})` : "Item removed";
   card.appendChild(title);
 
-  addLine(card, "Claimed by", `${claim.name} (roll no. ${claim.rollNo})`);
+  const claimedByP = document.createElement("p");
+  claimedByP.textContent = "Claimed by: ";
+  const claimantLink = document.createElement("a");
+  claimantLink.href = "profile.html?id=" + claim.claimantId;
+  claimantLink.textContent = `${claim.name} (roll no. ${claim.rollNo})`;
+  claimedByP.appendChild(claimantLink);
+  card.appendChild(claimedByP);
+
   addLine(card, "Contact", `${claim.contact} / ${claim.claimantEmail}`);
   addLine(card, "Their description", claim.answer);
   addLine(card, "Your private detail", secret);
@@ -128,6 +144,7 @@ async function renderReceived(claim, user) {
     card.append(approve, reject);
   }
 
+  addChatButton(card, claim.id);
   receivedDiv.appendChild(card);
 }
 
@@ -166,6 +183,16 @@ async function renderSent(claim) {
   title.textContent = item ? `${item.category} (${item.colour}, ${item.shape})` : "Item removed";
   card.appendChild(title);
 
+  if (item && item.finderId) {
+    const foundByP = document.createElement("p");
+    foundByP.textContent = "Found by: ";
+    const finderLink = document.createElement("a");
+    finderLink.href = "profile.html?id=" + item.finderId;
+    finderLink.textContent = "View profile";
+    foundByP.appendChild(finderLink);
+    card.appendChild(foundByP);
+  }
+
   if (claim.createdAt) {
     addLine(card, "Submitted on", claim.createdAt.toDate().toLocaleDateString());
   }
@@ -174,7 +201,7 @@ async function renderSent(claim) {
   result.className = "result";
   if (claim.status === "pending") {
     result.textContent = "Waiting for the finder to review your claim.";
-  }   else if (claim.status === "approved") {
+  } else if (claim.status === "approved") {
     let place = "the place where the item was handed over";
     try {
       const pickupSnap = await getDoc(doc(db, "itemPickup", claim.itemId));
@@ -193,6 +220,7 @@ async function renderSent(claim) {
   }
   card.appendChild(result);
 
+  addChatButton(card, claim.id);
   sentDiv.appendChild(card);
 }
 

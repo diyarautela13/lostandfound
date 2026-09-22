@@ -1,14 +1,14 @@
-import { login, logout, watchUser } from "./auth.js";
+import { login, logout, watchUser, isNewUser } from "./auth.js";
 
 const signedOut = document.getElementById("signedOut");
 const signedIn = document.getElementById("signedIn");
 const welcome = document.getElementById("welcome");
+const signupBtn = document.getElementById("signupBtn");
 const loginBtn = document.getElementById("loginBtn");
 const continueBtn = document.getElementById("continueBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 const msg = document.getElementById("loginMessage");
 
-// decide what to show once Firebase knows if someone is signed in
 watchUser((user) => {
   if (user) {
     welcome.textContent = "Signed in as " + user.displayName;
@@ -20,14 +20,26 @@ watchUser((user) => {
   }
 });
 
-loginBtn.addEventListener("click", async () => {
+async function handleAuthClick(intendedNewUser) {
+  signupBtn.disabled = true;
   loginBtn.disabled = true;
   msg.textContent = "Opening Google sign-in...";
+
   try {
-    await login();   // also creates the profile on first sign-in
-    window.location.href = "listing.html";
+    const user = await login();
+    const freshAccount = await isNewUser(user);
+
+    if (freshAccount) {
+      window.location.href = "signup.html";
+    } else if (intendedNewUser) {
+      msg.textContent = "This Gmail already has a profile. Signing you in instead.";
+      window.location.href = "listing.html";
+    } else {
+      window.location.href = "listing.html";
+    }
   } catch (err) {
     console.error(err);
+    signupBtn.disabled = false;
     loginBtn.disabled = false;
     if (err.code === "auth/popup-closed-by-user") {
       msg.textContent = "Sign-in was cancelled. Please try again.";
@@ -39,7 +51,10 @@ loginBtn.addEventListener("click", async () => {
       msg.textContent = "Sign-in failed (" + (err.code || err.message) + ").";
     }
   }
-});
+}
+
+signupBtn.addEventListener("click", () => handleAuthClick(true));
+loginBtn.addEventListener("click", () => handleAuthClick(false));
 
 continueBtn.addEventListener("click", () => {
   window.location.href = "listing.html";

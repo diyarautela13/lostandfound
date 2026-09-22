@@ -3,22 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My profile</title>
+  <title>Profile</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <nav id="navbar"></nav>
+<body class="wide">
+  <div id="navbar"></div>
+  <div id="profileHeader"></div>
+  <div id="profileDetails"></div>
 
-  <div id="profileHeader">
-    <img id="profilePhoto" alt="" referrerpolicy="no-referrer">
-    <div>
-      <h2 id="profileName"></h2>
-      <p id="profileEmail"></p>
-    </div>
+  <div id="myItemsSection">
+    <h2>Items I posted</h2>
+    <p id="postedStatus"></p>
+    <div id="myItems"></div>
   </div>
-
-  <h3>Items I posted</h3>
-  <div id="myItems"></div>
 
   <script type="module" src="js/profile.js"></script>
 </body>

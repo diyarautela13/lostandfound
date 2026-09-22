@@ -29,6 +29,7 @@ function addLine(label, value) {
 function showNotice(text) {
   notice.textContent = text;
   form.style.display = "none";
+  document.getElementById("claimIntro").style.display = "none";
 }
 
 // ---------- Load and show the item ----------
@@ -63,12 +64,19 @@ async function loadItem() {
     if (item.brand) addLine("Brand", item.brand);
     addLine("Description", item.description);
     addLine("Found on", item.foundAt.toDate().toLocaleDateString());
-
+    const link = document.createElement("p");
+    const a = document.createElement("a");
+    a.href = "profile.html?id=" + item.finderId;
+    a.textContent = "View finder's profile";
+    link.appendChild(a);
+    detailsDiv.appendChild(link);
     if (item.finderId && item.finderId === currentUser.uid) {
       showNotice("You posted this item. Claims will appear on your Messages page.");
     } else if (item.status !== "available") {
       showNotice("This item has already been returned to its owner.");
-    } else {
+        } else {
+      document.getElementById("claimIntro").style.display = "block";
+      form.style.display = "block";
       document.getElementById("claimName").value = currentUser.displayName || "";
     }
   } catch (err) {
