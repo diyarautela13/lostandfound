@@ -1,31 +1,380 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>College Lost &amp; Found</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <meta name="theme-color" content="#0B2A6B">
+  <meta name="description"
+        content="Banasthali Vidyapith campus Lost & Found portal">
+
+  <title>Campus Lost &amp; Found | Banasthali Vidyapith</title>
+
+  <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
-  <div class="hero">
-    <h1>College Lost &amp; Found</h1>
-    <p>Lost something on campus? Found something?</p>
 
-    <div id="signedOut" style="display:none">
-      <button id="signupBtn">Sign up with Gmail</button>
-      <button id="loginBtn">Sign in with Gmail</button>
-      <p class="hint">New here? Use Sign up. Already have a profile? Use Sign in.</p>
-    </div>
+  <main class="page-shell">
 
-    <div id="signedIn" style="display:none">
-      <p id="welcome"></p>
-      <button id="continueBtn">Continue</button>
-      <button id="logoutBtn">Sign out</button>
-    </div>
+    <section class="hero" aria-labelledby="pageTitle">
 
-    <p id="loginMessage"></p>
-  </div>
+      <!-- Decorative background elements -->
+      <div class="glow glow-one"></div>
+      <div class="glow glow-two"></div>
 
-  <script type="module" src="js/index.js"></script>
+
+      <!-- ================= HEADER ================= -->
+
+      <header class="topbar">
+
+        <div class="brand">
+
+          <div class="brand-logo">
+            <img
+              src="banasthali-logo.png"
+              alt="Banasthali Vidyapith seal"
+              class="seal"
+            >
+          </div>
+
+          <div class="brand-copy">
+            <span class="eyebrow">
+              BANASTHALI VIDYAPITH
+            </span>
+
+            <span class="brand-title">
+              Campus Connect
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="secure-badge" aria-label="Secure campus portal">
+
+          <span class="secure-dot"></span>
+
+          Campus Portal
+
+        </div>
+
+      </header>
+
+
+      <!-- ================= MAIN CONTENT ================= -->
+
+      <div class="hero-content">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="hero-copy">
+
+          <div class="mini-label">
+
+            <span class="label-dot"></span>
+
+            Lost something? Found something?
+
+          </div>
+
+
+          <h1 id="pageTitle">
+
+            Lost &amp; Found,<br>
+
+            <span>made for campus.</span>
+
+          </h1>
+
+
+          <p class="hero-description">
+
+            A simple place for Banasthali students to report
+            missing belongings, share found items, and reconnect
+            them with their owners.
+
+          </p>
+
+
+          <!-- Feature points -->
+
+          <div class="quick-points"
+               aria-label="Portal features">
+
+
+            <div class="quick-point">
+
+              <span class="point-icon">⌕</span>
+
+              <span>
+                Report &amp; search items
+              </span>
+
+            </div>
+
+
+            <div class="quick-point">
+
+              <span class="point-icon">✓</span>
+
+              <span>
+                Campus-only access
+              </span>
+
+            </div>
+
+
+            <div class="quick-point">
+
+              <span class="point-icon">↗</span>
+
+              <span>
+                Connect securely
+              </span>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ================= LOGIN CARD ================= -->
+
+        <div class="auth-card">
+
+
+          <div class="card-top">
+
+            <div class="card-icon">
+              ↔
+            </div>
+
+
+            <div>
+
+              <p class="card-kicker">
+                WELCOME BACK
+              </p>
+
+              <h2>
+                Enter the campus portal
+              </h2>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- ================= SIGNED OUT ================= -->
+
+          <div id="signedOut">
+
+            <p class="auth-text">
+
+              Sign in with your Gmail account to continue
+              to Lost &amp; Found.
+
+            </p>
+
+
+            <div class="actions">
+
+
+              <!-- SIGN UP -->
+
+              <button
+                id="signupBtn"
+                class="btn btn-primary"
+                type="button"
+              >
+
+                <span>
+                  Sign up with Gmail
+                </span>
+
+                <span class="arrow">
+                  →
+                </span>
+
+              </button>
+
+
+
+              <!-- LOGIN -->
+
+              <button
+                id="loginBtn"
+                class="btn btn-secondary"
+                type="button"
+              >
+
+                <span class="google-mark">
+                  G
+                </span>
+
+                <span>
+                  Sign in with Gmail
+                </span>
+
+              </button>
+
+
+            </div>
+
+
+            <p class="hint">
+
+              New here? Use <strong>Sign up</strong>.
+              Already have a profile?
+              Use <strong>Sign in</strong>.
+
+            </p>
+
+          </div>
+
+
+
+          <!-- ================= SIGNED IN ================= -->
+
+          <div id="signedIn">
+
+
+            <div class="welcome-box">
+
+              <span class="welcome-icon">
+                ✓
+              </span>
+
+
+              <div>
+
+                <span class="welcome-label">
+                  SIGNED IN
+                </span>
+
+                <p id="welcome"></p>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="actions">
+
+
+              <!-- CONTINUE -->
+
+              <button
+                id="continueBtn"
+                class="btn btn-primary"
+                type="button"
+              >
+
+                <span>
+                  Continue to portal
+                </span>
+
+                <span class="arrow">
+                  →
+                </span>
+
+              </button>
+
+
+
+              <!-- LOGOUT -->
+
+              <button
+                id="logoutBtn"
+                class="btn btn-secondary"
+                type="button"
+              >
+
+                Sign out
+
+              </button>
+
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Login status message -->
+
+          <p
+            id="loginMessage"
+            class="login-message"
+            aria-live="polite"
+          ></p>
+
+
+
+          <!-- Privacy note -->
+
+          <div class="privacy-note">
+
+            <span class="lock">
+              ⌑
+            </span>
+
+            Your account is used only for campus portal access.
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ================= FOOTER ================= -->
+
+      <div class="hero-footer">
+
+        <div class="footer-rule"></div>
+
+        <p>
+
+          <span>1935</span>
+
+          &nbsp;•&nbsp;
+
+          Banasthali Vidyapith
+
+          &nbsp;•&nbsp;
+
+          <span>सा विद्या या विमुक्तये</span>
+
+        </p>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+
+  <!-- Your existing JavaScript -->
+
+  <script
+    type="module"
+    src="js/index.js"
+  ></script>
+
 </body>
+
 </html>
