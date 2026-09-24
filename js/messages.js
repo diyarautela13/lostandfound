@@ -8,7 +8,8 @@ import {
   getDoc,
   doc,
   updateDoc,
-  serverTimestamp
+  serverTimestamp,
+  arrayUnion
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const receivedDiv = document.getElementById("claims");
@@ -32,10 +33,16 @@ function addChatButton(card, claimId) {
   const chatBtn = document.createElement("button");
   chatBtn.textContent = "Chat";
   chatBtn.addEventListener("click", () => {
-    window.location.href = "chat.html?claimId=" + claimId;
+    if (!claimId) {
+      alert("This claim has no ID — cannot open chat.");
+      console.error("addChatButton called with empty claimId");
+      return;
+    }
+    window.location.href = "chat.html?claimId=" + encodeURIComponent(claimId);
   });
   card.appendChild(chatBtn);
 }
+  
 
 // =====================================================
 // Part 1: claims other people made on items I found
@@ -297,4 +304,5 @@ async function renderChatRow(chat, user) {
 requireLogin((user) => {
   loadReceived(user);
   loadSent(user);
+  loadChats(user);
 });
