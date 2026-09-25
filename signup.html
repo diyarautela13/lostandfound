@@ -1,33 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Complete your profile</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="theme-color" content="#0B2A6B">
+    <meta name="description"
+          content="Complete your Banasthali Vidyapith Campus Connect profile">
+
+    <title>Complete Your Profile | Campus Connect</title>
+
+    <link rel="stylesheet" href="css/signup.css">
 </head>
+
 <body>
-  <h1>Complete your profile</h1>
-  <p>This information helps other students recognize and contact you.</p>
 
-  <form id="signupForm">
-    <input id="fullName" placeholder="Full name" required>
-    <input id="rollNo" placeholder="College roll number" required>
-    <select id="department" required>
-      <option value="">Select department</option>
-      <option>CSE</option>
-      <option>ECE</option>
-      <option>Mechanical</option>
-      <option>Civil</option>
-      <option>Other</option>
-    </select>
-    <input id="year" placeholder="Year (e.g. 2nd year)" required>
-    <input id="phone" placeholder="Phone number" required>
+    <main class="signup-page">
 
-    <button type="submit" id="signupBtn">Save and continue</button>
-    <p id="signupMessage"></p>
-  </form>
+        <!-- Decorative background -->
+        <div class="background-glow glow-one"></div>
+        <div class="background-glow glow-two"></div>
 
-  <script type="module" src="js/signup.js"></script>
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="signup-header">
+
+            <div class="brand">
+
+                <div class="brand-logo">
+                    <img
+                        src="banasthali-logo.png"
+                        alt="Banasthali Vidyapith seal"
+                    >
+                </div>
+
+                <div class="brand-text">
+
+                    <span class="eyebrow">
+                        BANASTHALI VIDYAPITH
+                    </span>
+
+                    <span class="brand-title">
+                        Campus Connect
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="secure-badge">
+                <span class="secure-dot"></span>
+                Secure Campus Portal
+            </div>
+
+        </header>
+
+
+        <!-- ================= MAIN ================= -->
+
+        <section class="signup-container">
+
+            <!-- Progress -->
+
+            <div class="progress">
+
+                <div class="progress-step completed">
+                    <span class="step-number">✓</span>
+                    <span>Gmail</span>
+                </div>
+
+                <div class="progress-line"></div>
+
+                <div class="progress-step active">
+                    <span class="step-number">2</span>
+                    <span>Profile</span>
+                </div>
+
+            </div>
+
+
+            <!-- Profile Card -->
+
+            <div class="signup-card">
+
+                <div class="card-heading">
+
+                    <div class="profile-icon">
+                        👤
+                    </div>
+
+                    <div>
+
+                        <p class="card-kicker">
+                            ALMOST THERE
+                        </p>
+
+                        <h1>
+                            Complete your profile
+                        </h1>
+
+                    </div>
+
+                </div>
+
+
+                <p class="intro-text">
+                    Tell us a little about yourself so other students
+                    can recognize and contact you when needed.
+                </p>
+
+
+                <!-- Gmail status -->
+
+                <div class="gmail-status">
+
+                    <div class="gmail-icon">
+                        G
+                    </div>
+
+                    <div class="gmail-text">
+
+                        <span class="verified-label">
+                            GMAIL ACCOUNT VERIFIED
+                        </span>
+
+                        <span class="verified-text">
+                            Your Google account has been successfully connected.
+                        </span>
+
+                    </div>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                </div>
+
+
+                <!-- ================= FORM ================= -->
+
+                <form id="signupForm">
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Full name
+                        </label>
+
+                        <input
+                            id="fullName"
+                            type="text"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="rollNo">
+                            College roll number
+                        </label>
+
+                        <input
+                            id="rollNo"
+                            type="text"
+                            placeholder="Enter your college roll number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="department">
+                                Department
+                            </label>
+
+                            <select id="department" required>
+
+                                <option value="">
+                                    Select department
+                                </option>
+
+                                <option>
+                                    CSE
+                                </option>
+
+                                <option>
+                                    ECE
+                                </option>
+
+                                <option>
+                                    Mechanical
+                                </option>
+
+                                <option>
+                                    Civil
+                                </option>
+
+                                <option>
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="year">
+                                Year
+                            </label>
+
+                            <input
+                                id="year"
+                                type="text"
+                                placeholder="e.g. 2nd year"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone number
+                        </label>
+
+                        <input
+                            id="phone"
+                            type="tel"
+                            placeholder="Enter your phone number"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        id="signupBtn"
+                        class="submit-btn"
+                    >
+
+                        <span>
+                            Save &amp; Continue
+                        </span>
+
+                        <span class="submit-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- Message -->
+
+                    <p
+                        id="signupMessage"
+                        class="signup-message"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+
+                <!-- Privacy -->
+
+                <div class="privacy-note">
+
+                    <span class="lock-icon">
+                        🔒
+                    </span>
+
+                    Your profile information is used only for the campus portal.
+
+                </div>
+
+            </div>
+
+
+            <!-- Footer -->
+
+            <footer class="signup-footer">
+
+                <span>1935</span>
+                &nbsp;•&nbsp;
+                Banasthali Vidyapith
+                &nbsp;•&nbsp;
+                <span>सा विद्या या विमुक्तये</span>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <script
+        type="module"
+        src="js/signup.js"
+    ></script>
+
 </body>
+
 </html>
