@@ -1,55 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Found items</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <meta name="theme-color" content="#0B2A6B">
+  <meta
+    name="description"
+    content="Found items on Banasthali Vidyapith campus"
+  >
+
+  <title>Found Items | Campus Connect</title>
+
+  <link rel="stylesheet" href="css/listing.css">
 </head>
+
 <body class="wide">
-  <h1>Found items</h1>
-  <a href="upload.html">I found something</a>
-<body class="wide">
-  <div id="navbar"></div>
-  <h1>Found items</h1>
-  <div class="filters">
-    <select id="filterCategory">
-      <option value="">All categories</option>
-      <option>Bottle</option>
-      <option>Keys</option>
-      <option>ID card</option>
-      <option>Bag</option>
-      <option>Phone</option>
-      <option>Other</option>
-    </select>
 
-    <select id="filterColour">
-      <option value="">All colours</option>
-      <option>Black</option>
-      <option>White</option>
-      <option>Blue</option>
-      <option>Red</option>
-      <option>Green</option>
-      <option>Other</option>
-    </select>
+  <!-- ================= NAVBAR ================= -->
 
-    <select id="filterShape">
-      <option value="">All shapes</option>
-      <option>Round</option>
-      <option>Rectangular</option>
-      <option>Square</option>
-      <option>Other</option>
-    </select>
+  <header id="campusHeader">
 
-    <select id="sortDate">
-      <option value="desc">Newly found</option>
-      <option value="asc">Oldest found</option>
-    </select>
-  </div>
+    <div class="campus-brand">
 
-  <p id="status"></p>
-  <div id="items"></div>
+      <div class="campus-logo">
+        <img
+          src="banasthali-logo.png"
+          alt="Banasthali Vidyapith seal"
+        >
+      </div>
 
-  <script type="module" src="js/listing.js"></script>
+      <div class="campus-brand-text">
+
+        <span class="campus-eyebrow">
+          BANASTHALI VIDYAPITH
+        </span>
+
+        <span class="campus-title">
+          Campus Connect
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div id="navbar"></div>
+
+  </header>
+
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="listing-page">
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="listing-header">
+
+      <div class="listing-heading">
+
+        <span class="page-eyebrow">
+          CAMPUS LOST &amp; FOUND
+        </span>
+
+        <h1>
+          Found Items
+        </h1>
+
+        <p>
+          Browse items found around campus and help reconnect
+          them with their owners.
+        </p>
+
+      </div>
+
+
+      <a
+        href="upload.html"
+        class="found-item-btn"
+      >
+
+        <span class="btn-icon">
+          +
+        </span>
+
+        <span>
+          I found something
+        </span>
+
+        <span class="btn-arrow">
+          →
+        </span>
+
+      </a>
+
+    </section>
+
+
+
+    <!-- ================= FILTER PANEL ================= -->
+
+    <section class="filter-panel">
+
+      <div class="filter-heading">
+
+        <div class="filter-icon">
+          ≡
+        </div>
+
+        <div>
+
+          <h2>
+            Find an item
+          </h2>
+
+          <p>
+            Filter the listings using the details you remember.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="filters">
+
+
+        <div class="filter-group">
+
+          <label for="filterCategory">
+            Category
+          </label>
+
+          <select id="filterCategory">
+
+            <option value="">
+              All categories
+            </option>
+
+            <option>Bottle</option>
+            <option>Keys</option>
+            <option>ID card</option>
+            <option>Bag</option>
+            <option>Phone</option>
+            <option>Other</option>
+
+          </select>
+
+        </div>
+
+
+
+        <div class="filter-group">
+
+          <label for="filterColour">
+            Colour
+          </label>
+
+          <select id="filterColour">
+
+            <option value="">
+              All colours
+            </option>
+
+            <option>Black</option>
+            <option>White</option>
+            <option>Blue</option>
+            <option>Red</option>
+            <option>Green</option>
+            <option>Other</option>
+
+          </select>
+
+        </div>
+
+
+
+        <div class="filter-group">
+
+          <label for="filterShape">
+            Shape
+          </label>
+
+          <select id="filterShape">
+
+            <option value="">
+              All shapes
+            </option>
+
+            <option>Round</option>
+            <option>Rectangular</option>
+            <option>Square</option>
+            <option>Other</option>
+
+          </select>
+
+        </div>
+
+
+
+        <div class="filter-group">
+
+          <label for="sortDate">
+            Sort by
+          </label>
+
+          <select id="sortDate">
+
+            <option value="desc">
+              Newly found
+            </option>
+
+            <option value="asc">
+              Oldest found
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- STATUS -->
+
+    <div class="listing-status">
+
+      <span class="status-dot"></span>
+
+      <p id="status">
+        Loading found items...
+      </p>
+
+    </div>
+
+
+
+    <!-- ITEMS -->
+
+    <section
+      id="items"
+      class="items-grid"
+      aria-live="polite"
+    ></section>
+
+
+  </main>
+
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="campus-footer">
+
+    <div class="footer-line"></div>
+
+    <p>
+
+      <strong>1935</strong>
+
+      <span>•</span>
+
+      Banasthali Vidyapith
+
+      <span>•</span>
+
+      <strong>सा विद्या या विमुक्तये</strong>
+
+    </p>
+
+  </footer>
+
+
+
+  <script
+    type="module"
+    src="js/listing.js"
+  ></script>
+
 </body>
+
 </html>

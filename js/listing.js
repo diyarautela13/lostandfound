@@ -1,3 +1,4 @@
+
 import { requireLogin } from "./auth.js";
 import { setupNavbar } from "./nav.js";
 import { db } from "./firebase.js";
@@ -20,11 +21,22 @@ let allItems = [];
 // ---------- Load items from Firestore, sorted by date ----------
 async function loadItems() {
   statusP.textContent = "Loading...";
+
   try {
-    const q = query(collection(db, "items"), orderBy("foundAt", sortSel.value));
+    const q = query(
+      collection(db, "items"),
+      orderBy("foundAt", sortSel.value)
+    );
+
     const snapshot = await getDocs(q);
-    allItems = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+
+    allItems = snapshot.docs.map((d) => ({
+      id: d.id,
+      ...d.data()
+    }));
+
     render();
+
   } catch (err) {
     console.error(err);
     statusP.textContent = "Could not load items.";
@@ -44,47 +56,68 @@ function render() {
   statusP.textContent = filtered.length ? "" : "No items found.";
 
   filtered.forEach((item) => {
+
+    // ---------- Card ----------
     const card = document.createElement("div");
     card.className = "card";
 
+    // ---------- Image ----------
     const img = document.createElement("img");
     img.src = item.photoURL;
-    img.alt = item.category;
+    img.alt = item.category || "Found item";
 
+    // ---------- Info ----------
     const info = document.createElement("div");
     info.className = "info";
 
+    // ---------- Title ----------
     const title = document.createElement("h3");
     title.textContent = item.category;
 
+    // ---------- Details ----------
     const details = document.createElement("p");
     details.textContent = `${item.colour} • ${item.shape}`;
 
+    // ---------- Date ----------
     const date = document.createElement("p");
-    date.textContent = "Found: " + item.foundAt.toDate().toLocaleDateString();
+    date.textContent =
+      "Found: " + item.foundAt.toDate().toLocaleDateString();
 
-    
+    // ---------- Claim Button ----------
+    const claimBtn = document.createElement("button");
+    claimBtn.className = "claim-btn";
+    claimBtn.type = "button";
+    claimBtn.textContent = "Claim Item";
 
-        info.append(title, details, date);
+    claimBtn.addEventListener("click", (event) => {
+      // Prevent card click from opening item.html
+      event.stopPropagation();
+
+      // Open claim page with the item ID
+      window.location.href = "item.html?id=" + item.id;
+    });
+
+    // Add everything inside card
+    info.append(title, details, date, claimBtn);
     card.append(img, info);
-        card.style.cursor = "pointer";
+
+    // ---------- Make entire card clickable ----------
+    card.style.cursor = "pointer";
+
     card.addEventListener("click", () => {
       window.location.href = "item.html?id=" + item.id;
     });
+
     itemsDiv.appendChild(card);
   });
 }
 
 // ---------- Events ----------
-sortSel.addEventListener("change", loadItems);   // sort needs a new query
-categorySel.addEventListener("change", render);  // filters just re-filter
-colourSel.addEventListener("change", render);
-shapeSel.addEventListener("change", render);
-
-loadItems();
 sortSel.addEventListener("change", loadItems);
+
 categorySel.addEventListener("change", render);
 colourSel.addEventListener("change", render);
 shapeSel.addEventListener("change", render);
 
+// ---------- Start ----------
 requireLogin(() => loadItems());

@@ -1,54 +1,183 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Report a found item</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="css/upload.css
+  ">
 </head>
+
 <body>
-  <h1>I found something</h1>
+<nav class="top-nav">
+  <div class="nav-links">
+    <a href="listing.html">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="messages.html">Messages</a>
+    <button id="logoutBtn" type="button">Logout</button>
+  </div>
+</nav>
+  <div class="page-shell">
 
-  <form id="itemForm">
-    <select id="category" required>
-      <option value="">Select category</option>
-      <option>Bottle</option>
-      <option>Keys</option>
-      <option>ID card</option>
-      <option>Bag</option>
-      <option>Phone</option>
-      <option>Other</option>
-    </select>
+    <!-- ================= HEADER ================= -->
 
-    <select id="colour" required>
-      <option value="">Select colour</option>
-      <option>Black</option>
-      <option>White</option>
-      <option>Blue</option>
-      <option>Red</option>
-      <option>Green</option>
-      <option>Other</option>
-    </select>
+    <header class="site-header">
 
-    <select id="shape" required>
-      <option value="">Select shape</option>
-      <option>Round</option>
-      <option>Rectangular</option>
-      <option>Square</option>
-      <option>Other</option>
-    </select>
+      <a href="index.html" class="brand">
 
-    <input id="brand" placeholder="Brand (optional)">
-    <textarea id="description" placeholder="Description" required></textarea>
-    <input type="date" id="foundDate" required>
-    <input id="handedOverAt" placeholder="Where did you hand it over?" required>
-    <input id="secretDetail" placeholder="Private detail only the owner would know" required>
-    <input type="file" id="photo" accept="image/*" required>
+        <img
+          src="banasthali-logo.png"
+          alt="Banasthali Vidyapith Logo"
+          class="brand-logo"
+        >
 
-    <button type="submit" id="submitBtn">Submit</button>
-    <p id="message"></p>
-  </form>
+        <div class="brand-text">
+          <span class="brand-eyebrow">BANASTHALI VIDYAPITH</span>
+          <span class="brand-title">Campus Connect</span>
+        </div>
 
-  <script type="module" src="js/upload.js"></script>
+      </a>
+
+      <div class="portal-badge">
+        <span class="badge-dot"></span>
+        Campus Portal
+      </div>
+
+    </header>
+
+
+    <!-- ================= ORIGINAL UPLOAD CONTENT ================= -->
+
+    <main class="upload-main">
+
+      <h1>I found something</h1>
+
+      <form id="itemForm">
+
+        <select id="category" required>
+          <option value="">Select category</option>
+          <option>Bottle</option>
+          <option>Keys</option>
+          <option>ID card</option>
+          <option>Bag</option>
+          <option>Phone</option>
+          <option>Other</option>
+        </select>
+
+
+        <select id="colour" required>
+          <option value="">Select colour</option>
+          <option>Black</option>
+          <option>White</option>
+          <option>Blue</option>
+          <option>Red</option>
+          <option>Green</option>
+          <option>Other</option>
+        </select>
+
+
+        <select id="shape" required>
+          <option value="">Select shape</option>
+          <option>Round</option>
+          <option>Rectangular</option>
+          <option>Square</option>
+          <option>Other</option>
+        </select>
+
+
+        <input
+          id="brand"
+          placeholder="Brand (optional)"
+        >
+
+
+        <textarea
+          id="description"
+          placeholder="Description"
+          required
+        ></textarea>
+
+
+        <input
+          type="date"
+          id="foundDate"
+          required
+        >
+
+
+        <input
+          id="handedOverAt"
+          placeholder="Where did you hand it over?"
+          required
+        >
+
+
+        <input
+          id="secretDetail"
+          placeholder="Private detail only the owner would know"
+          required
+        >
+
+
+        <input
+          type="file"
+          id="photo"
+          accept="image/*"
+          required
+        >
+
+
+        <button
+          type="submit"
+          id="submitBtn"
+        >
+          Submit
+        </button>
+
+
+        <p id="message"></p>
+
+      </form>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="site-footer">
+
+      <span class="footer-year">1935</span>
+      <span>•</span>
+      <span>Banasthali Vidyapith</span>
+      <span>•</span>
+      <span class="footer-motto">सा विद्या या विमुक्तये</span>
+
+    </footer>
+
+  </div>
+
+
+  <script type="module" src="js/upload.js">
+
+  import { logout } from "./js/auth.js";
+
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  logoutBtn.addEventListener("click", async () => {
+    try {
+      await logout();
+      window.location.href = "index.html";
+    } catch (error) {
+      console.error("Logout failed:", error);
+      alert("Could not log out. Please try again.");
+    }
+  });
+  </script>
+
 </body>
 </html>
+```

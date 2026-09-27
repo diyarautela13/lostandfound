@@ -1,0 +1,1265 @@
+/* =========================================================
+   BANASTHALI VIDYAPITH
+   CAMPUS CONNECT
+   MESSAGES PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   GOOGLE FONTS
+   ========================================================= */
+
+@import url(
+    'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap'
+);
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+
+    --navy: #08275d;
+
+    --navy-dark: #061c49;
+
+    --blue: #1268d5;
+
+    --blue-dark: #0b4da8;
+
+    --blue-light: #eaf4ff;
+
+    --blue-pale: #f5faff;
+
+    --text: #203e68;
+
+    --muted: #6680a2;
+
+    --border: #d6e6f6;
+
+    --border-light: #e7f0f8;
+
+    --white: #ffffff;
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family: "Inter", Arial, sans-serif;
+
+    color: var(--text);
+
+    background:
+
+        radial-gradient(
+            circle at 2% 15%,
+            rgba(190, 225, 252, 0.65),
+            transparent 320px
+        ),
+
+        radial-gradient(
+            circle at 98% 80%,
+            rgba(204, 232, 255, 0.65),
+            transparent 400px
+        ),
+
+        linear-gradient(
+            135deg,
+            #eef7ff 0%,
+            #ffffff 45%,
+            #f1f8ff 100%
+        );
+
+    padding: 28px 0 50px;
+}
+
+
+button,
+a {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   LARGE DECORATIVE BACKGROUND
+   ========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 550px;
+    height: 550px;
+
+    left: -310px;
+    top: 90px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(186, 224, 253, 0.55),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 650px;
+    height: 650px;
+
+    right: -400px;
+    bottom: -400px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(22, 104, 211, 0.08);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   MAIN PAGE SHELL
+   ========================================================= */
+
+.page-shell {
+
+    width: min(1820px, calc(100% - 76px));
+
+    margin: 0 auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.97),
+            rgba(248,252,255,0.97)
+        );
+
+    border: 1px solid #d5e5f5;
+
+    border-radius: 34px;
+
+    box-shadow:
+        0 20px 60px rgba(23, 71, 119, 0.08);
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+
+    min-height: 125px;
+
+    padding: 24px 56px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    text-decoration: none;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   BANASTHALI LOGO
+   ========================================================= */
+
+.brand-logo {
+
+    width: 58px;
+
+    height: 58px;
+
+    object-fit: contain;
+
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 7px 13px rgba(27, 69, 116, 0.16)
+        );
+}
+
+
+/* =========================================================
+   BRAND TEXT
+   ========================================================= */
+
+.brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 3px;
+}
+
+
+/* ---------------------------------------------------------
+   BANASTHALI VIDYAPITH
+   --------------------------------------------------------- */
+
+.brand-university {
+
+    color: #1168d4;
+
+    font-family: "Inter", Arial, sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    letter-spacing: 3.2px;
+
+    white-space: nowrap;
+}
+
+
+/* ---------------------------------------------------------
+   CAMPUS CONNECT
+   --------------------------------------------------------- */
+
+.brand-name {
+
+    color: #092d69;
+
+    font-family: "Inter", Arial, sans-serif;
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.7px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.main-nav {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 5px;
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   NAVIGATION LINKS
+   ========================================================= */
+
+.nav-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding: 9px 13px;
+
+    border-radius: 10px;
+
+    color: #486689;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.nav-link:hover {
+
+    color: #1268d5;
+
+    background: #edf6ff;
+
+    transform: translateY(-1px);
+}
+
+
+.nav-link.active {
+
+    color: #1268d5;
+
+    background: #eaf4ff;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PROFILE PICTURE
+   ========================================================= */
+
+.profile-picture {
+
+    width: 42px;
+
+    height: 42px;
+
+    margin-left: 9px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid #d5e6f7;
+
+    background: #edf6ff;
+
+    box-shadow:
+        0 5px 15px rgba(30, 80, 130, 0.13);
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON
+   ========================================================= */
+
+.logout-btn {
+
+    margin-left: 5px;
+
+    padding: 9px 16px;
+
+    border: 1px solid #cfe1f3;
+
+    border-radius: 999px;
+
+    background: #ffffff;
+
+    color: #12356b;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.logout-btn:hover {
+
+    color: #1268d5;
+
+    background: #f2f8ff;
+
+    border-color: #a9cbed;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   HEADER DIVIDER
+   ========================================================= */
+
+.header-divider {
+
+    height: 1px;
+
+    margin: 0 56px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d6e6f6,
+            #c8def3,
+            #e4eff9
+        );
+}
+
+
+/* =========================================================
+   MAIN MESSAGES AREA
+   ========================================================= */
+
+.messages-page {
+
+    width: min(1120px, calc(100% - 100px));
+
+    margin: 0 auto;
+
+    padding: 70px 0 60px;
+}
+
+
+/* =========================================================
+   PAGE EYEBROW
+   ========================================================= */
+
+.page-eyebrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 9px 17px;
+
+    border: 1px solid #cde1f6;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.90);
+
+    color: #1468d5;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    box-shadow:
+        0 7px 20px rgba(30, 89, 145, 0.05);
+}
+
+
+.eyebrow-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #1671dc;
+
+    box-shadow:
+        0 0 0 5px rgba(22,113,220,0.10);
+}
+
+
+/* =========================================================
+   MESSAGES TITLE
+   ========================================================= */
+
+.messages-page h1 {
+
+    margin: 23px 0 0;
+
+    color: #08275d;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 58px;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: -2.3px;
+}
+
+
+/* =========================================================
+   TITLE BLUE LINE
+   ========================================================= */
+
+.title-line {
+
+    width: 58px;
+
+    height: 5px;
+
+    margin-top: 18px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0a408e,
+            #1877df
+        );
+}
+
+
+/* =========================================================
+   INTRO TEXT
+   ========================================================= */
+
+.page-intro {
+
+    max-width: 760px;
+
+    margin: 22px 0 58px;
+
+    color: #617b9f;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   MESSAGE SECTION
+   ========================================================= */
+
+.message-section {
+
+    margin-bottom: 48px;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    margin-bottom: 19px;
+}
+
+
+/* =========================================================
+   SECTION ICON
+   ========================================================= */
+
+.section-icon {
+
+    width: 39px;
+
+    height: 39px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #edf6ff;
+
+    color: #1468d5;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    border: 1px solid #d7e9f9;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
+
+.section-heading h2 {
+
+    margin: 1px 0 3px;
+
+    color: #092b63;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.35px;
+}
+
+
+/* =========================================================
+   SECTION STATUS
+   ========================================================= */
+
+.section-heading p {
+
+    margin: 0;
+
+    color: #7890ae;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   MESSAGE GRID
+   ========================================================= */
+
+.message-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(310px, 1fr)
+        );
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   MESSAGE CARDS
+   ========================================================= */
+
+.message-grid > * {
+
+    position: relative;
+
+    padding: 24px;
+
+    border: 1px solid #d8e7f5;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fbff
+        );
+
+    box-shadow:
+        0 8px 25px rgba(26, 74, 123, 0.055);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+}
+
+
+.message-grid > *::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 22px;
+
+    right: 22px;
+
+    top: 0;
+
+    height: 3px;
+
+    border-radius: 0 0 8px 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0a3d8c,
+            #1674dc,
+            #70c7ff
+        );
+}
+
+
+.message-grid > *:hover {
+
+    transform: translateY(-3px);
+
+    border-color: #bdd7f1;
+
+    box-shadow:
+        0 16px 35px rgba(25, 77, 130, 0.11);
+}
+
+
+/* =========================================================
+   CONVERSATIONS
+   ========================================================= */
+
+.conversation-list {
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 13px;
+}
+
+
+.conversation-list > * {
+
+    position: relative;
+
+    padding: 20px 22px;
+
+    border: 1px solid #d8e7f5;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 6px 20px rgba(25, 75, 125, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.conversation-list > *:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(25, 75, 125, 0.09);
+}
+
+
+/* =========================================================
+   CARD TYPOGRAPHY
+   ========================================================= */
+
+.message-grid h3,
+.conversation-list h3 {
+
+    margin: 0 0 7px;
+
+    color: #0a2c65;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.message-grid p,
+.conversation-list p {
+
+    color: #67809f;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   BUTTONS INSIDE CARDS
+   ========================================================= */
+
+.message-grid button,
+.conversation-list button {
+
+    padding: 9px 15px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0a3d8d,
+            #176fd8
+        );
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 14px rgba(20, 103, 210, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.message-grid button:hover,
+.conversation-list button:hover {
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(20, 103, 210, 0.25);
+}
+
+
+/* =========================================================
+   EMPTY STATES
+   ========================================================= */
+
+.empty-state,
+.no-items,
+.no-results,
+.empty {
+
+    min-height: 150px;
+
+    padding: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px dashed #c8ddec;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.72);
+
+    color: #7890ad;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.campus-footer {
+
+    width: min(1120px, calc(100% - 100px));
+
+    margin: 0 auto;
+
+    padding-bottom: 30px;
+}
+
+
+.footer-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin-bottom: 21px;
+
+    background: #d9e7f5;
+}
+
+
+.footer-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    color: #7187a4;
+
+    font-size: 12px;
+}
+
+
+.footer-year {
+
+    color: #0868d4;
+
+    font-weight: 700;
+}
+
+
+.footer-content strong {
+
+    color: #0867ce;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .site-header {
+
+        padding: 23px 35px;
+
+    }
+
+
+    .header-divider {
+
+        margin: 0 35px;
+    }
+
+
+    .brand-university {
+
+        font-size: 15px;
+
+        letter-spacing: 2.5px;
+    }
+
+
+    .brand-name {
+
+        font-size: 24px;
+    }
+
+
+    .nav-link {
+
+        padding: 8px 9px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE / TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .page-shell {
+
+        width: calc(100% - 24px);
+
+        border-radius: 26px;
+    }
+
+
+    .site-header {
+
+        min-height: auto;
+
+        padding: 22px 24px;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 20px;
+    }
+
+
+    .brand {
+
+        justify-content: flex-start;
+    }
+
+
+    .main-nav {
+
+        justify-content: flex-start;
+
+        flex-wrap: wrap;
+
+        gap: 3px;
+    }
+
+
+    .header-divider {
+
+        margin: 0 24px;
+    }
+
+
+    .messages-page {
+
+        width: calc(100% - 48px);
+
+        padding-top: 50px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding-top: 12px;
+    }
+
+
+    .brand-logo {
+
+        width: 52px;
+
+        height: 52px;
+    }
+
+
+    .brand {
+
+        gap: 13px;
+    }
+
+
+    .brand-university {
+
+        font-size: 12px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .brand-name {
+
+        font-size: 21px;
+
+        letter-spacing: -0.4px;
+    }
+
+
+    .main-nav {
+
+        width: 100%;
+
+        justify-content: flex-start;
+    }
+
+
+    .nav-link {
+
+        font-size: 11px;
+
+        padding: 7px 8px;
+    }
+
+
+    .profile-picture {
+
+        width: 35px;
+
+        height: 35px;
+    }
+
+
+    .logout-btn {
+
+        padding: 7px 11px;
+
+        font-size: 11px;
+    }
+
+
+    .messages-page {
+
+        width: calc(100% - 36px);
+
+        padding: 42px 0 45px;
+    }
+
+
+    .messages-page h1 {
+
+        font-size: 48px;
+
+        letter-spacing: -1.8px;
+    }
+
+
+    .page-intro {
+
+        font-size: 14px;
+
+        margin-bottom: 45px;
+    }
+
+
+    .message-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .campus-footer {
+
+        width: calc(100% - 36px);
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+    .site-header {
+
+        padding: 20px 18px;
+    }
+
+
+    .header-divider {
+
+        margin: 0 18px;
+    }
+
+
+    .brand-logo {
+
+        width: 47px;
+
+        height: 47px;
+    }
+
+
+    .brand-university {
+
+        font-size: 10px;
+
+        letter-spacing: 1.7px;
+    }
+
+
+    .brand-name {
+
+        font-size: 19px;
+    }
+
+
+    .main-nav {
+
+        gap: 2px;
+    }
+
+
+    .nav-link {
+
+        padding: 6px;
+
+        font-size: 10px;
+    }
+
+
+    .messages-page {
+
+        width: calc(100% - 28px);
+    }
+
+
+    .messages-page h1 {
+
+        font-size: 43px;
+    }
+}

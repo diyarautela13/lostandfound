@@ -1,25 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Messages</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Messages | Campus Connect</title>
+
+    <link rel="stylesheet" href="css/messages.css">
 </head>
-<body class="wide">
-  <div id="navbar"></div>
-  <h1>Messages</h1>
 
-  <h2>Claims on items you found</h2>
-  <p id="msgStatus"></p>
-  <div id="claims"></div>
+<body>
 
-  <h2>Your claims</h2>
-  <p id="myClaimsStatus"></p>
-  <div id="myClaims"></div>
-    <h2>Conversations</h2>
-  <p id="chatsStatus"></p>
-  <div id="chatsList"></div>
-  <script type="module" src="js/messages.js"></script>
+    <!-- =====================================================
+         MAIN CAMPUS CONNECT CONTAINER
+         ===================================================== -->
+
+    <div class="page-shell">
+
+        <!-- =================================================
+             HEADER / NAVIGATION
+             ================================================= -->
+
+        <header class="site-header">
+
+            <!-- BRANDING -->
+            <a href="index.html" class="brand">
+
+                <img
+                    src="banasthali-logo.png"
+                    alt="Banasthali Vidyapith Logo"
+                    class="brand-logo"
+                >
+
+                <div class="brand-text">
+
+                    <div class="brand-university">
+                        BANASTHALI VIDYAPITH
+                    </div>
+
+                    <div class="brand-name">
+                        Campus Connect
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+            <nav class="main-nav" aria-label="Main navigation">
+
+                <a href="listing.html" class="nav-link">
+                    Home
+                </a>
+
+                <a href="upload.html" class="nav-link">
+                    I Found Something
+                </a>
+
+                <a href="messages.html"
+                   class="nav-link active">
+                    Messages
+                </a>
+
+                <a href="profile.html" class="nav-link">
+                    Profile
+                </a>
+
+                <!-- Profile picture -->
+                <img
+                    id="profilePicture"
+                    class="profile-picture"
+                    src=""
+                    alt="Profile"
+                    style="display: none;"
+                >
+
+                <button
+                    type="button"
+                    id="logoutBtn"
+                    class="logout-btn"
+                >
+                    Logout
+                </button>
+
+            </nav>
+
+        </header>
+
+
+        <!-- =================================================
+             HEADER DIVIDER
+             ================================================= -->
+
+        <div class="header-divider"></div>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+             ================================================= -->
+
+        <main class="messages-page">
+
+            <!-- Small campus label -->
+
+            <div class="page-eyebrow">
+
+                <span class="eyebrow-dot"></span>
+
+                CAMPUS CONNECT
+
+            </div>
+
+
+            <!-- PAGE TITLE -->
+
+            <h1>
+                Messages
+            </h1>
+
+
+            <!-- Blue underline -->
+
+            <div class="title-line"></div>
+
+
+            <!-- INTRO -->
+
+            <p class="page-intro">
+                Stay connected with students who found your belongings,
+                submitted claims, or are part of your conversations.
+            </p>
+
+
+            <!-- =================================================
+                 CLAIMS ON ITEMS YOU FOUND
+                 ================================================= -->
+
+            <section class="message-section">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <h2>Claims on items you found</h2>
+
+                        <p id="msgStatus">
+                            Loading claims...
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="claims" class="message-grid">
+                    <!-- Claims inserted by messages.js -->
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 YOUR CLAIMS
+                 ================================================= -->
+
+            <section class="message-section">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        →
+                    </div>
+
+                    <div>
+                        <h2>Your claims</h2>
+
+                        <p id="myClaimsStatus">
+                            Loading your claims...
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="myClaims" class="message-grid">
+                    <!-- Your claims inserted by messages.js -->
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CONVERSATIONS
+                 ================================================= -->
+
+            <section class="message-section">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        💬
+                    </div>
+
+                    <div>
+                        <h2>Conversations</h2>
+
+                        <p id="chatsStatus">
+                            Loading conversations...
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="chatsList" class="conversation-list">
+                    <!-- Conversations inserted by messages.js -->
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="campus-footer">
+
+            <div class="footer-line"></div>
+
+            <div class="footer-content">
+
+                <span class="footer-year">
+                    1935
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    Banasthali Vidyapith
+                </span>
+
+                <span>•</span>
+
+                <strong>
+                    सा विद्या या विमुक्तये
+                </strong>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script type="module" src="js/messages.js"></script>
+
 </body>
 </html>
