@@ -1,22 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Profile</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="wide">
-  <div id="navbar"></div>
-  <div id="profileHeader"></div>
-  <div id="profileDetails"></div>
 
-  <div id="myItemsSection">
-    <h2>Items I posted</h2>
-    <p id="postedStatus"></p>
-    <div id="myItems"></div>
-  </div>
+  <title>Profile | Campus Connect</title>
+
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="site-header">
+
+    <!-- LEFT: BRAND -->
+
+    <a href="index.html" class="brand">
+
+      <img
+        src="banasthali-logo.png"
+        alt="Banasthali Vidyapith Logo"
+        class="brand-logo"
+      >
+
+      <div class="brand-text">
+        <span class="brand-eyebrow">
+          BANASTHALI VIDYAPITH
+        </span>
+
+        <span class="brand-title">
+          Campus Connect
+        </span>
+      </div>
+
+    </a>
+
+
+    <!-- RIGHT: NAVIGATION -->
+
+    <nav id="navbar" class="main-nav" aria-label="Main navigation">
+    </nav>
+
+  </header>
+
+
+  <!-- ================= PROFILE ================= -->
+
+  <main class="profile-page">
+
+    <section class="profile-card">
+
+      <div id="profileHeader" class="profile-header"></div>
+
+      <div id="profileDetails" class="profile-details"></div>
+
+    </section>
+
+
+    <!-- ================= MY ITEMS ================= -->
+
+    <section id="myItemsSection" class="items-section">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="section-label">CAMPUS ACTIVITY</span>
+
+          <h2>Items I posted</h2>
+        </div>
+
+        <p id="postedStatus"></p>
+
+      </div>
+
+
+      <div id="myItems" class="items-grid"></div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="site-footer">
+
+    <span class="footer-year">1935</span>
+
+    <span>•</span>
+
+    <span>Banasthali Vidyapith</span>
+
+    <span>•</span>
+
+    <span class="footer-motto">
+      सा विद्या या विमुक्तये
+    </span>
+
+  </footer>
+
 
   <script type="module" src="js/profile.js"></script>
+
 </body>
 </html>

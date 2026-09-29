@@ -1,23 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chat</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <meta name="theme-color" content="#0B2A6B">
+
+  <title>Chat | Campus Connect</title>
+
+  <link rel="stylesheet" href="css/chat.css">
 </head>
+
 <body class="wide">
-  <div id="navbar"></div>
-  <a href="messages.html">&larr; Back to Messages</a>
 
-  <div id="chatHeader"></div>
-  <div id="chatMessages"></div>
+  <!-- ================= HEADER ================= -->
 
-  <form id="chatForm">
-    <input id="chatInput" placeholder="Type a message..." autocomplete="off" required>
-    <button type="submit">Send</button>
-  </form>
+  <header id="campusHeader">
 
-  <script type="module" src="js/chat.js?v=2"></script>
+    <div class="campus-brand">
+
+      <div class="campus-logo">
+        <img
+          src="banasthali-logo.png"
+          alt="Banasthali Vidyapith seal"
+        >
+      </div>
+
+      <div class="campus-brand-text">
+
+        <span class="campus-eyebrow">
+          BANASTHALI VIDYAPITH
+        </span>
+
+        <span class="campus-title">
+          Campus Connect
+        </span>
+
+      </div>
+
+    </div>
+
+    <div id="navbar"></div>
+
+  </header>
+
+
+  <!-- ================= CHAT PAGE ================= -->
+
+  <main class="chat-page">
+
+    <a
+      href="messages.html"
+      class="back-messages"
+    >
+      <span>←</span>
+      Back to Messages
+    </a>
+
+
+    <section class="chat-shell">
+
+      <!-- Chat user / item information -->
+      <div id="chatHeader"></div>
+
+
+      <!-- Messages -->
+      <div id="chatMessages"></div>
+
+
+      <!-- Message input -->
+      <form id="chatForm">
+
+        <input
+          id="chatInput"
+          placeholder="Type a message..."
+          autocomplete="off"
+          required
+        >
+
+        <button type="submit">
+          Send
+          <span>→</span>
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="campus-footer">
+
+    <div class="footer-line"></div>
+
+    <p>
+      <strong>1935</strong>
+      <span>•</span>
+      Banasthali Vidyapith
+      <span>•</span>
+      <strong>सा विद्या या विमुक्तये</strong>
+    </p>
+
+  </footer>
+
+
+  <script
+    type="module"
+    src="js/chat.js?v=2"
+  ></script>
+
 </body>
+
 </html>

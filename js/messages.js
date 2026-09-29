@@ -1,5 +1,5 @@
 import { db } from "./firebase.js";
-import { requireLogin } from "./auth.js";
+import { requireLogin, logout } from "./auth.js";
 import {
   collection,
   query,
@@ -16,6 +16,23 @@ const receivedDiv = document.getElementById("claims");
 const receivedStatus = document.getElementById("msgStatus");
 const sentDiv = document.getElementById("myClaims");
 const sentStatus = document.getElementById("myClaimsStatus");
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", async () => {
+    logoutBtn.disabled = true;
+    logoutBtn.textContent = "Logging out...";
+
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Logout failed:", error);
+
+      logoutBtn.disabled = false;
+      logoutBtn.textContent = "Logout";
+    }
+  });
+}
 
 function addLine(parent, label, value) {
   const p = document.createElement("p");

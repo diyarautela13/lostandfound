@@ -1,4 +1,4 @@
-import { requireLogin } from "./auth.js";
+import { requireLogin, logout } from "./auth.js";
 import { db } from "./firebase.js";
 import {
   collection,
@@ -31,10 +31,17 @@ const submitBtn = document.getElementById("submitBtn");
 const message = document.getElementById("message");
 
 let currentUser = null;
+
+const profilePicture = document.getElementById("profilePicture");
+
 requireLogin((user) => {
   currentUser = user;
-});
 
+  if (profilePicture && user.photoURL) {
+    profilePicture.src = user.photoURL;
+    profilePicture.style.display = "block";
+  }
+});
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!currentUser) {
@@ -96,3 +103,21 @@ form.addEventListener("submit", async (e) => {
     submitBtn.disabled = false;
   }
 });
+// ---------- Logout ----------
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", async () => {
+    logoutBtn.disabled = true;
+    logoutBtn.textContent = "Logging out...";
+
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Logout failed:", error);
+
+      logoutBtn.disabled = false;
+      logoutBtn.textContent = "Logout";
+    }
+  });
+}
