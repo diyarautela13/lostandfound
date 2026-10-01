@@ -382,25 +382,16 @@ body::after {
    ========================================================= */
 
 .profile-picture {
-
     width: 42px;
-
     height: 42px;
-
-    margin-left: 9px;
-
+    margin: 0 4px 0 9px;
     object-fit: cover;
-
     border-radius: 50%;
-
     border: 2px solid #d5e6f7;
-
     background: #edf6ff;
-
-    box-shadow:
-        0 5px 15px rgba(30, 80, 130, 0.13);
+    box-shadow: 0 5px 15px rgba(30, 80, 130, 0.13);
+    flex-shrink: 0;
 }
-
 
 /* =========================================================
    LOGOUT BUTTON

@@ -319,6 +319,13 @@ async function renderChatRow(chat, user) {
   chatsListDiv.appendChild(row);
 }
 requireLogin((user) => {
+  const profilePicture = document.getElementById("profilePicture");
+
+  if (profilePicture && user.photoURL) {
+    profilePicture.src = user.photoURL;
+    profilePicture.style.display = "block";
+  }
+
   loadReceived(user);
   loadSent(user);
   loadChats(user);

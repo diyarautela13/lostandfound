@@ -1,9 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+  --navy: #0B2A6B;
+  --deep-blue: #071D4B;
+  --blue: #1769D2;
+  --bright-blue: #2F82E9;
+  --sky: #8BD3FF;
+  --pale: #EEF6FF;
+  --white: #FFFFFF;
+  --ink: #12203A;
+  --muted: #5F6F89;
+  --border: #D9E8F8;
+  --shadow: 0 24px 70px rgba(7, 29, 75, 0.15);
+  --soft-shadow: 0 12px 35px rgba(11, 42, 107, 0.10);
+}
+
 
 /* =========================
    GLOBAL
-   ========================= */
+========================= */
 
 * {
   box-sizing: border-box;
@@ -11,16 +30,14 @@
 
 html {
   min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-
-  font-family: "DM Sans", sans-serif;
-
-  color: #071D4B;
-
+  color: var(--ink);
+  font-family: "DM Sans", Arial, sans-serif;
   background:
     radial-gradient(
       circle at 15% 10%,
@@ -32,25 +49,96 @@ body {
       rgba(47, 130, 233, 0.12),
       transparent 30%
     ),
-    #F7FBFF;
+    linear-gradient(
+      145deg,
+      #F5FAFF 0%,
+      #EAF4FF 52%,
+      #F8FCFF 100%
+    );
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 
 /* =========================
    TOP NAVIGATION
-   ========================= */
+========================= */
 
 .top-nav {
-  width: 100%;
+  position: absolute;
+  top: 28px;
+  right: max(4%, calc((100vw - 1180px) / 2));
+
+  width: auto;
+  padding: 0;
+  margin: 0;
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  gap: 8px;
 
-  padding: 18px 4% 10px;
+  z-index: 100;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.top-nav .nav-home {
+  box-sizing: border-box;
+
+  height: 38px;
+  min-width: 60px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 13px;
+  margin: 0;
+
+  border: 0;
+  border-radius: 9px;
 
   background: transparent;
+
+  color: var(--navy);
+
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
+
+.top-nav .nav-home:hover {
+  color: var(--blue);
+  background: var(--pale);
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   OTHER NAV LINKS
+========================= */
 
 .nav-links {
   display: flex;
@@ -58,22 +146,37 @@ body {
   justify-content: flex-end;
 
   gap: 8px;
+  min-height: 40px;
 }
 
-.nav-links a {
+.top-nav .nav-links > a {
+  box-sizing: border-box;
+
+  height: 38px;
+  min-width: 60px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 9px 13px;
+  padding: 0 13px;
+  margin: 0;
 
+  border: 0;
   border-radius: 9px;
 
-  color: #0B2A6B;
-  text-decoration: none;
+  background: transparent;
 
+  color: var(--navy);
+
+  font-family: "DM Sans", Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
+  line-height: 1;
+
+  text-decoration: none;
+
+  cursor: pointer;
 
   transition:
     color 0.2s ease,
@@ -81,69 +184,97 @@ body {
     transform 0.2s ease;
 }
 
-.nav-links a:hover {
-  color: #1769D2;
-  background: #EEF6FF;
-
+.top-nav .nav-links > a:hover {
+  color: var(--blue);
+  background: var(--pale);
   transform: translateY(-1px);
 }
 
 
 /* =========================
-   LOGOUT BUTTON
-   ========================= */
+   PROFILE PHOTO
+========================= */
 
-#logoutBtn {
+.profile-picture {
+  width: 36px;
+  height: 36px;
+
+  display: block;
+  flex-shrink: 0;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+
+  background: var(--pale);
+
+  box-shadow: 0 4px 14px rgba(11, 42, 107, 0.14);
+
+  margin: 0 2px;
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+.top-nav #logoutBtn {
+  box-sizing: border-box;
+
+  height: 38px;
+  min-width: 70px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 9px 15px;
+  padding: 0 15px;
+  margin: 0;
 
-  border: 1px solid #C9DCEF;
+  border: 1px solid #c9dcef;
   border-radius: 9px;
 
-  background: #EEF6FF;
-  color: #0B2A6B;
+  background: var(--pale);
+  color: var(--navy);
 
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", Arial, sans-serif;
   font-size: 13px;
   font-weight: 700;
+  line-height: 1;
 
   cursor: pointer;
 
   transition:
     background 0.2s ease,
-    border-color 0.2s ease,
     color 0.2s ease,
+    border-color 0.2s ease,
     transform 0.2s ease;
 }
 
-#logoutBtn:hover {
-  background: #0B2A6B;
-  border-color: #0B2A6B;
-  color: #FFFFFF;
-
+.top-nav #logoutBtn:hover {
+  background: var(--navy);
+  color: #ffffff;
+  border-color: var(--navy);
   transform: translateY(-1px);
-}
-
-#logoutBtn:disabled {
-  opacity: 0.65;
-  cursor: wait;
 }
 
 
 /* =========================
+   HIDE CAMPUS PORTAL
+========================= */
+
+.portal-badge {
+  display: none !important;
+}
+/* =========================
    PAGE SHELL
-   ========================= */
+========================= */
 
 .page-shell {
-  width: min(1200px, 92%);
-
+  width: min(1180px, calc(100% - 32px));
   min-height: calc(100vh - 70px);
-
   margin: 0 auto;
-
   display: flex;
   flex-direction: column;
 }
@@ -151,136 +282,128 @@ body {
 
 /* =========================
    HEADER
-   ========================= */
+========================= */
 
 .site-header {
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 30px;
-
-  padding: 20px 0 28px;
+  padding: 20px 0 25px;
+  border-bottom: 1px solid var(--border);
 }
 
 
 /* =========================
    BRAND
-   ========================= */
+   MATCHES item.css
+========================= */
 
 .brand {
   display: flex;
   align-items: center;
-
   gap: 13px;
-
   color: inherit;
   text-decoration: none;
 }
 
+
+/* =========================
+   LOGO
+========================= */
+
 .brand-logo {
-  width: 58px;
-  height: 58px;
-
-  object-fit: contain;
-
+  width: 54px;
+  height: 54px;
   display: block;
+  flex-shrink: 0;
+  padding: 3px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow:
+    0 5px 18px rgba(11, 42, 107, 0.10);
+  overflow: hidden;
 }
+
+
+/* =========================
+   BRAND TEXT
+   EXACT SAME STYLE AS item.css
+========================= */
 
 .brand-text {
   display: flex;
   flex-direction: column;
-
   gap: 2px;
 }
 
 .brand-eyebrow {
-  color: #1769D2;
-
-  font-size: 11px;
+  color: var(--blue);
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 10px;
   font-weight: 700;
-
-  letter-spacing: 1.5px;
+  letter-spacing: 0.18em;
+  line-height: normal;
 }
 
 .brand-title {
-  color: #071D4B;
-
-  font-family: "Playfair Display", serif;
-
-  font-size: 25px;
+  color: var(--navy);
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 17px;
   font-weight: 700;
-
-  line-height: 1.1;
+  line-height: normal;
 }
 
 
 /* =========================
    PORTAL BADGE
-   ========================= */
+========================= */
 
 .portal-badge {
   display: inline-flex;
   align-items: center;
-
   gap: 8px;
-
-  padding: 9px 13px;
-
-  border: 1px solid #D7E8F8;
-  border-radius: 30px;
-
-  background: rgba(255, 255, 255, 0.8);
-
-  color: #0B2A6B;
-
+  padding: 8px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
   font-size: 12px;
-  font-weight: 700;
-
-  box-shadow:
-    0 6px 20px rgba(11, 42, 107, 0.06);
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .badge-dot {
-  width: 8px;
-  height: 8px;
-
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
   border-radius: 50%;
-
-  background: #2F82E9;
-
+  background: var(--blue);
   box-shadow:
-    0 0 0 4px rgba(47, 130, 233, 0.12);
+    0 0 0 4px rgba(23, 105, 210, 0.10);
 }
 
 
 /* =========================
    MAIN
-   ========================= */
+========================= */
 
 .upload-main {
   width: min(760px, 100%);
-
-  margin: 30px auto 70px;
-
+  margin: 42px auto 70px;
   padding: 42px;
-
-  background: #FFFFFF;
-
-  border: 1px solid #DDEBF7;
-
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(217, 232, 248, 0.95);
   border-radius: 22px;
-
-  box-shadow:
-    0 20px 55px rgba(11, 42, 107, 0.08);
+  box-shadow: var(--soft-shadow);
 }
 
 
 /* =========================
    HEADING
-   ========================= */
+========================= */
 
 .upload-heading {
   margin-bottom: 30px;
@@ -288,58 +411,47 @@ body {
 
 .section-label {
   display: inline-block;
-
   margin-bottom: 9px;
-
-  color: #1769D2;
-
+  color: var(--blue);
   font-size: 11px;
   font-weight: 700;
-
-  letter-spacing: 1.6px;
+  letter-spacing: 0.16em;
 }
 
 .upload-heading h1 {
   margin: 0 0 10px;
-
-  color: #071D4B;
-
-  font-family: "Playfair Display", serif;
-
+  color: var(--deep-blue);
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
   font-size: clamp(32px, 5vw, 44px);
-
   line-height: 1.1;
+  letter-spacing: -0.025em;
 }
 
 .upload-heading p {
   max-width: 600px;
-
   margin: 0;
-
-  color: #60728A;
-
+  color: var(--muted);
   font-size: 14px;
-
   line-height: 1.7;
 }
 
 
 /* =========================
    FORM
-   ========================= */
+========================= */
 
 #itemForm {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 20px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-
   gap: 7px;
 }
 
@@ -348,8 +460,7 @@ body {
 }
 
 .form-group label {
-  color: #0B2A6B;
-
+  color: var(--navy);
   font-size: 12px;
   font-weight: 700;
 }
@@ -357,25 +468,19 @@ body {
 
 /* =========================
    FORM CONTROLS
-   ========================= */
+========================= */
 
 #itemForm input,
 #itemForm select,
 #itemForm textarea {
   width: 100%;
-
   border: 1px solid #D4E3F0;
   border-radius: 10px;
-
   background: #FBFDFF;
-
-  color: #071D4B;
-
-  font-family: "DM Sans", sans-serif;
+  color: var(--deep-blue);
+  font-family: "DM Sans", Arial, sans-serif;
   font-size: 13px;
-
   outline: none;
-
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
@@ -385,15 +490,12 @@ body {
 #itemForm input,
 #itemForm select {
   min-height: 46px;
-
   padding: 11px 13px;
 }
 
 #itemForm textarea {
   min-height: 120px;
-
   padding: 13px;
-
   resize: vertical;
 }
 
@@ -405,10 +507,8 @@ body {
 #itemForm input:focus,
 #itemForm select:focus,
 #itemForm textarea:focus {
-  border-color: #2F82E9;
-
-  background: #FFFFFF;
-
+  border-color: var(--bright-blue);
+  background: var(--white);
   box-shadow:
     0 0 0 4px rgba(47, 130, 233, 0.10);
 }
@@ -416,46 +516,39 @@ body {
 
 /* =========================
    FILE INPUT
-   ========================= */
+========================= */
 
 #photo {
   padding: 10px !important;
-
   background: #F5FAFF !important;
-
   cursor: pointer;
 }
 
 
 /* =========================
    SUBMIT BUTTON
-   ========================= */
+========================= */
 
 #submitBtn {
   grid-column: 1 / -1;
-
   width: 100%;
-
-  min-height: 48px;
-
+  min-height: 49px;
   margin-top: 5px;
-
-  border: none;
+  border: 1px solid transparent;
   border-radius: 11px;
-
-  background: #0B2A6B;
-  color: #FFFFFF;
-
-  font-family: "DM Sans", sans-serif;
-
+  background:
+    linear-gradient(
+      135deg,
+      var(--navy),
+      var(--blue)
+    );
+  color: var(--white);
+  font-family: "DM Sans", Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
-
   cursor: pointer;
-
   box-shadow:
-    0 10px 25px rgba(11, 42, 107, 0.16);
-
+    0 10px 22px rgba(11, 42, 107, 0.18);
   transition:
     background 0.2s ease,
     transform 0.2s ease,
@@ -463,12 +556,15 @@ body {
 }
 
 #submitBtn:hover {
-  background: #1769D2;
-
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--bright-blue)
+    );
   transform: translateY(-1px);
-
   box-shadow:
-    0 13px 30px rgba(11, 42, 107, 0.20);
+    0 13px 28px rgba(11, 42, 107, 0.24);
 }
 
 #submitBtn:active {
@@ -477,71 +573,59 @@ body {
 
 #submitBtn:disabled {
   opacity: 0.65;
-
   cursor: wait;
-
   transform: none;
 }
 
 
 /* =========================
    MESSAGE
-   ========================= */
+========================= */
 
 #message {
   grid-column: 1 / -1;
-
+  min-height: 18px;
   margin: 0;
-
-  color: #1769D2;
-
-  font-size: 13px;
+  color: var(--blue);
+  font-size: 12px;
   font-weight: 600;
-
+  line-height: 1.5;
   text-align: center;
 }
 
 
 /* =========================
    FOOTER
-   ========================= */
+========================= */
 
 .site-footer {
   margin-top: auto;
-
   padding: 25px 0 30px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   flex-wrap: wrap;
-
   gap: 8px;
-
   color: #71839A;
-
-  font-size: 12px;
-
+  font-size: 10px;
+  letter-spacing: 0.08em;
   text-align: center;
 }
 
 .footer-year {
-  color: #0B2A6B;
-
+  color: var(--navy);
   font-weight: 800;
 }
 
 .footer-motto {
-  color: #1769D2;
-
+  color: var(--blue);
   font-weight: 600;
 }
 
 
 /* =========================
    TABLET
-   ========================= */
+========================= */
 
 @media (max-width: 800px) {
 
@@ -574,7 +658,7 @@ body {
 
 /* =========================
    MOBILE
-   ========================= */
+========================= */
 
 @media (max-width: 600px) {
 
@@ -584,40 +668,46 @@ body {
 
   .nav-links {
     width: 100%;
-
     flex-wrap: wrap;
-
+    justify-content: flex-end;
     gap: 5px;
   }
 
-  .nav-links a,
+  .top-nav .nav-links a,
   #logoutBtn {
-    padding: 7px 9px;
-
+    height: 34px;
+    padding: 0 9px;
     font-size: 11px;
   }
 
+  .profile-picture {
+    width: 32px;
+    height: 32px;
+  }
+
   .page-shell {
-    width: 92%;
+    width: calc(100% - 20px);
   }
 
   .site-header {
     flex-direction: column;
-
     align-items: flex-start;
-
     gap: 18px;
-
-    padding-top: 15px;
+    padding-top: 18px;
   }
 
   .brand-logo {
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
+    padding: 3px;
+  }
+
+  .brand-eyebrow {
+    font-size: 8px;
   }
 
   .brand-title {
-    font-size: 22px;
+    font-size: 14px;
   }
 
   .portal-badge {
@@ -626,10 +716,8 @@ body {
 
   .upload-main {
     margin-top: 15px;
-
     padding: 25px 20px;
-
-    border-radius: 17px;
+    border-radius: 18px;
   }
 
   .upload-heading h1 {
@@ -642,7 +730,107 @@ body {
 
   .site-footer {
     padding-bottom: 22px;
-
-    font-size: 11px;
+    font-size: 8px;
+    letter-spacing: 0.04em;
   }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+@media (max-width: 600px) {
+
+  .top-nav {
+    position: static;
+    width: 100%;
+    padding: 14px 4% 8px;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+
+  .top-nav .nav-links > a,
+  .top-nav #logoutBtn {
+    height: 34px;
+    min-width: auto;
+    padding: 0 9px;
+    font-size: 11px !important;
+  }
+
+  .profile-picture {
+    width: 32px;
+    height: 32px;
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding-top: 18px;
+  }
+}
+/* Hide Campus Portal badge */
+.portal-badge {
+  display: none !important;
+}
+/* ================= NAV LINKS ================= */
+
+.top-nav .nav-links > a {
+  box-sizing: border-box;
+
+  width: auto;
+  height: 38px;
+  min-width: 60px;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  margin: 0 !important;
+  padding: 0 13px !important;
+
+  border: 0 !important;
+  border-radius: 9px !important;
+
+  background: transparent !important;
+
+  color: var(--navy) !important;
+
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 38px !important;
+
+  text-decoration: none !important;
+
+  vertical-align: middle;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.top-nav .nav-links > a:hover {
+  color: var(--blue) !important;
+  background: var(--pale) !important;
+  transform: translateY(-1px);
 }

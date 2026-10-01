@@ -1,0 +1,725 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+    --navy: #0B2A6B;
+    --deep-blue: #071D4B;
+    --blue: #1769D2;
+    --bright-blue: #2F82E9;
+    --sky: #8BD3FF;
+    --pale: #EEF6FF;
+    --white: #FFFFFF;
+    --ink: #12203A;
+    --muted: #5F6F89;
+    --border: #D9E8F8;
+
+    --shadow: 0 24px 70px rgba(7, 29, 75, 0.15);
+    --soft-shadow: 0 12px 35px rgba(11, 42, 107, 0.10);
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 28px 0;
+
+    color: var(--ink);
+
+    font-family: 'DM Sans', Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(47, 130, 233, 0.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(139, 211, 255, 0.20),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #F5FAFF 0%,
+            #EAF4FF 52%,
+            #F8FCFF 100%
+        );
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================
+   CAMPUS CONNECT HEADER
+   Added through item.js
+========================= */
+
+.topbar {
+    width: min(1120px, calc(100% - 32px));
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin: 0 auto 25px;
+    padding: 0 0 20px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.brand-logo {
+    width: 54px;
+    height: 54px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--white);
+
+    box-shadow:
+        0 5px 18px rgba(11, 42, 107, 0.10);
+
+    overflow: hidden;
+}
+
+.brand-logo .seal {
+    width: 48px;
+    height: 48px;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* =========================
+   BRAND TEXT
+========================= */
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.eyebrow {
+    color: var(--blue);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+}
+
+.brand-title {
+    color: var(--navy);
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   BACK LINK
+========================= */
+
+body > a {
+    width: min(1120px, calc(100% - 32px));
+
+    display: block;
+
+    margin: 0 auto 22px;
+
+    color: var(--blue);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        color 0.16s ease,
+        transform 0.16s ease;
+}
+
+body > a:hover {
+    color: var(--navy);
+    transform: translateX(-2px);
+}
+
+
+/* =========================
+   ITEM DETAILS CONTAINER
+========================= */
+
+#itemDetails {
+    width: min(1120px, calc(100% - 32px));
+
+    margin: 0 auto 25px;
+
+    padding: 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.97),
+            rgba(244, 249, 255, 0.94)
+        );
+
+    box-shadow: var(--shadow);
+}
+
+
+/* =========================
+   ITEM DETAILS CONTENT
+========================= */
+
+#itemDetails h1,
+#itemDetails h2,
+#itemDetails h3 {
+    margin-top: 0;
+
+    color: var(--navy);
+}
+
+#itemDetails h1 {
+    margin-bottom: 18px;
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.1;
+}
+
+#itemDetails h2 {
+    font-size: 25px;
+}
+
+#itemDetails h3 {
+    font-size: 18px;
+}
+
+#itemDetails p {
+    color: var(--muted);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+#itemDetails strong {
+    color: var(--navy);
+}
+
+
+/* =========================
+   ITEM IMAGE
+========================= */
+
+#itemDetails img {
+    max-width: 100%;
+    height: auto;
+
+    display: block;
+
+    margin: 0 auto 25px;
+
+    border-radius: 18px;
+
+    border: 1px solid var(--border);
+
+    background: var(--pale);
+
+    box-shadow:
+        0 12px 30px rgba(11, 42, 107, 0.10);
+}
+
+
+/* =========================
+   ITEM INFORMATION
+========================= */
+
+#itemDetails .item-info,
+#itemDetails .details,
+#itemDetails .item-details {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+#itemDetails .item-info > *,
+#itemDetails .details > *,
+#itemDetails .item-details > * {
+    padding: 13px 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #F8FCFF;
+}
+
+
+/* =========================
+   CLAIM INTRO
+========================= */
+
+#claimIntro {
+    width: min(1120px, calc(100% - 32px));
+
+    margin: 0 auto 18px;
+
+    padding: 24px 27px;
+
+    border: 1px solid #CFE4FA;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #F8FCFF,
+            #EEF6FF
+        );
+
+    box-shadow:
+        0 10px 30px rgba(11, 42, 107, 0.07);
+}
+
+#claimIntro h2 {
+    margin: 0 0 7px;
+
+    color: var(--navy);
+
+    font-family:
+        'Playfair Display',
+        Georgia,
+        serif;
+
+    font-size: 27px;
+}
+
+#claimIntro p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   CLAIM FORM
+========================= */
+
+#claimForm {
+    width: min(700px, calc(100% - 32px));
+
+    margin: 0 auto;
+
+    padding: 28px;
+
+    border: 1px solid rgba(207, 226, 247, 0.95);
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    box-shadow: var(--soft-shadow);
+
+    position: relative;
+}
+
+#claimForm::before {
+    content: "";
+
+    position: absolute;
+
+    left: 24px;
+    right: 24px;
+    top: 0;
+
+    height: 4px;
+
+    border-radius: 0 0 8px 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--navy),
+            var(--bright-blue),
+            var(--sky)
+        );
+}
+
+
+/* =========================
+   FORM INPUTS
+========================= */
+
+#claimForm input,
+#claimForm textarea {
+    width: 100%;
+
+    display: block;
+
+    margin-bottom: 13px;
+
+    padding: 13px 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    color: var(--ink);
+
+    background: #F8FCFF;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.16s ease,
+        box-shadow 0.16s ease,
+        background 0.16s ease;
+}
+
+#claimForm input {
+    min-height: 47px;
+}
+
+#claimForm textarea {
+    min-height: 125px;
+
+    resize: vertical;
+
+    line-height: 1.55;
+}
+
+#claimForm input::placeholder,
+#claimForm textarea::placeholder {
+    color: #8795AA;
+}
+
+#claimForm input:focus,
+#claimForm textarea:focus {
+    border-color: var(--bright-blue);
+
+    background: var(--white);
+
+    box-shadow:
+        0 0 0 3px rgba(47, 130, 233, 0.12);
+}
+
+
+/* =========================
+   CLAIM BUTTON
+========================= */
+
+#claimBtn {
+    width: 100%;
+
+    min-height: 49px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 16px;
+
+    border: 1px solid transparent;
+
+    border-radius: 11px;
+
+    color: var(--white);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy),
+            var(--blue)
+        );
+
+    box-shadow:
+        0 10px 22px rgba(11, 42, 107, 0.18);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        transform 0.16s ease,
+        box-shadow 0.16s ease;
+}
+
+#claimBtn:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 13px 28px rgba(11, 42, 107, 0.24);
+}
+
+#claimBtn:active {
+    transform: translateY(0);
+}
+
+#claimBtn:focus-visible {
+    outline: 3px solid rgba(47, 130, 233, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* =========================
+   CLAIM MESSAGE
+========================= */
+
+#claimMessage {
+    min-height: 20px;
+
+    margin: 13px 0 0;
+
+    color: var(--blue);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+
+/* =========================
+   FORM VALIDATION
+========================= */
+
+#claimForm input:invalid:not(:placeholder-shown),
+#claimForm textarea:invalid:not(:placeholder-shown) {
+    border-color: #B8CBE2;
+}
+
+
+/* =========================
+   SELECTION
+========================= */
+
+::selection {
+    color: var(--white);
+    background: var(--blue);
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #EEF6FF;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #B9D5F2;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bright-blue);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 850px) {
+
+    body {
+        padding: 20px 0;
+    }
+
+    .topbar {
+        width: calc(100% - 28px);
+
+        margin-bottom: 20px;
+    }
+
+    #itemDetails {
+        width: calc(100% - 28px);
+
+        padding: 24px;
+
+        border-radius: 20px;
+    }
+
+    #claimIntro {
+        width: calc(100% - 28px);
+    }
+
+    #claimForm {
+        width: calc(100% - 28px);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 540px) {
+
+    body {
+        padding: 14px 0;
+    }
+
+    .topbar {
+        width: calc(100% - 20px);
+
+        align-items: flex-start;
+
+        padding-bottom: 16px;
+
+        margin-bottom: 18px;
+    }
+
+    .brand {
+        gap: 10px;
+    }
+
+    .brand-logo {
+        width: 46px;
+        height: 46px;
+    }
+
+    .brand-logo .seal {
+        width: 41px;
+        height: 41px;
+    }
+
+    .eyebrow {
+        font-size: 8px;
+        letter-spacing: 0.15em;
+    }
+
+    .brand-title {
+        font-size: 14px;
+    }
+
+    body > a {
+        width: calc(100% - 20px);
+
+        margin-bottom: 16px;
+
+        font-size: 12px;
+    }
+
+    #itemDetails {
+        width: calc(100% - 20px);
+
+        padding: 20px;
+
+        border-radius: 18px;
+    }
+
+    #itemDetails h1 {
+        font-size: 34px;
+    }
+
+    #claimIntro {
+        width: calc(100% - 20px);
+
+        padding: 20px;
+    }
+
+    #claimIntro h2 {
+        font-size: 24px;
+    }
+
+    #claimForm {
+        width: calc(100% - 20px);
+
+        padding: 22px 18px;
+
+        border-radius: 18px;
+    }
+
+    #claimForm::before {
+        left: 18px;
+        right: 18px;
+    }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}

@@ -121,3 +121,24 @@ requireLogin((user) => {
   currentUser = user;
   loadItem();
 });
+const header = document.createElement("header");
+header.className = "topbar";
+
+header.innerHTML = `
+  <div class="brand">
+    <div class="brand-logo">
+      <img
+        src="banasthali-logo.png"
+        alt="Banasthali Vidyapith"
+        class="seal"
+      >
+    </div>
+
+    <div class="brand-copy">
+      <div class="eyebrow">BANASTHALI VIDYAPITH</div>
+      <div class="brand-title">Campus Connect</div>
+    </div>
+  </div>
+`;
+
+document.body.prepend(header);
