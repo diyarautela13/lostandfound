@@ -73,6 +73,7 @@ form.addEventListener("submit", async (e) => {
       description: document.getElementById("description").value.trim(),
       photoURL: photoURL,
       foundAt: Timestamp.fromDate(new Date(document.getElementById("foundDate").value)),
+      foundLocation: document.getElementById("foundLocation").value.trim(),
       createdAt: serverTimestamp(),
       finderId: currentUser.uid,
       status: "available"

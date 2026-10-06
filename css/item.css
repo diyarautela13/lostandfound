@@ -723,3 +723,8 @@ body > a:hover {
         transition: none !important;
     }
 }
+#itemNotice {
+  text-align: center;
+  width: 100%;
+  margin: 25px auto;
+}

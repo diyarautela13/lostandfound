@@ -15,6 +15,7 @@ const claimBtn = document.getElementById("claimBtn");
 const claimMessage = document.getElementById("claimMessage");
 
 const notice = document.createElement("p");
+notice.id = "itemNotice";
 form.before(notice);
 
 let currentUser = null;
@@ -63,6 +64,7 @@ async function loadItem() {
     addLine("Shape", item.shape);
     if (item.brand) addLine("Brand", item.brand);
     addLine("Description", item.description);
+    addLine("Found At", item.foundLocation);
     addLine("Found on", item.foundAt.toDate().toLocaleDateString());
     const link = document.createElement("p");
     const a = document.createElement("a");
