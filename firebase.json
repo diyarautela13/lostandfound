@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "lostandfound-7c8f6",
     "public": ".",
     "ignore": [
       "firebase.json",

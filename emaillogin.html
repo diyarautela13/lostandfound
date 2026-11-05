@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0B2A6B">
+
+    <title>Sign in with Email | Campus Connect</title>
+
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+
+<body>
+
+    <main class="signup-page">
+
+        <div class="background-glow glow-one"></div>
+        <div class="background-glow glow-two"></div>
+
+        <header class="signup-header">
+            <div class="brand">
+                <div class="brand-logo">
+                    <img src="banasthali-logo.png" alt="Banasthali Vidyapith seal">
+                </div>
+                <div class="brand-text">
+                    <span class="eyebrow">BANASTHALI VIDYAPITH</span>
+                    <span class="brand-title">Campus Connect</span>
+                </div>
+            </div>
+
+            <div class="secure-badge">
+                <span class="secure-dot"></span>
+                Secure Campus Portal
+            </div>
+        </header>
+
+        <section class="signup-container">
+
+            <div class="signup-card">
+
+                <div class="card-heading">
+                    <div class="profile-icon">✉️</div>
+                    <div>
+                        <p class="card-kicker" id="modeKicker">NEW HERE</p>
+                        <h1 id="modeTitle">Sign up with email</h1>
+                    </div>
+                </div>
+
+                <p class="intro-text">
+                    Use any email address. After signing up, you will
+                    complete your profile in the next step.
+                </p>
+
+                <form id="signupForm">
+
+                    <div class="form-group">
+                        <label for="authEmail">Email</label>
+                        <input id="authEmail" type="email"
+                               placeholder="Enter your email"
+                               autocomplete="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="authPassword">Password</label>
+                        <input id="authPassword" type="password"
+                               placeholder="At least 6 characters"
+                               autocomplete="new-password" required>
+                    </div>
+
+                    <div class="forgot-row" id="forgotRow" hidden>
+                        <button type="button" class="auth-link" id="forgotBtn">
+                            Forgot password?
+                        </button>
+                    </div>
+
+                    <button type="submit" id="authBtn" class="submit-btn">
+                        <span id="authBtnText">Sign up</span>
+                        <span class="submit-arrow">→</span>
+                    </button>
+
+                    <p id="authMessage" class="signup-message" aria-live="polite"></p>
+
+                    <p class="auth-switch">
+                        <span id="switchText">Already have an account?</span>
+                        <button type="button" class="auth-link" id="switchBtn">Log in</button>
+                    </p>
+
+                </form>
+
+                <div class="privacy-note">
+                    <span class="lock-icon">🔒</span>
+                    <a href="index.html" class="auth-link">Back to Google sign-in</a>
+                </div>
+
+            </div>
+
+            <footer class="signup-footer">
+                <span>1935</span>
+                &nbsp;•&nbsp;
+                Banasthali Vidyapith
+                &nbsp;•&nbsp;
+                <span>सा विद्या या विमुक्तये</span>
+            </footer>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="js/emaillogin.js"></script>
+
+</body>
+
+</html>

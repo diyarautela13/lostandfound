@@ -3,6 +3,7 @@ import { auth, db } from "./firebase.js";
 import {
   GoogleAuthProvider,
   signInWithPopup,
+  getRedirectResult,
   signOut,
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
@@ -27,6 +28,11 @@ export async function login() {
   return result.user;
 }
 
+// Kept so index.js can import it (does nothing unless a redirect happened)
+export async function finishRedirectLogin() {
+  const result = await getRedirectResult(auth);
+  return result ? result.user : null;
+}
 
 // =========================================================
 // LOGOUT

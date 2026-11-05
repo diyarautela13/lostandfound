@@ -11,7 +11,7 @@ const msg = document.getElementById("loginMessage");
 
 watchUser((user) => {
   if (user) {
-    welcome.textContent = "Signed in as " + user.displayName;
+    welcome.textContent = "Signed in as " + (user.displayName || user.email);
     signedIn.style.display = "block";
     signedOut.style.display = "none";
   } else {
