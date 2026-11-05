@@ -8,7 +8,19 @@ const btn = document.getElementById("signupBtn");
 const msg = document.getElementById("signupMessage");
 
 let currentUser = null;
+function validatePhone(phone) {
+  const cleanedPhone = phone.replace(/\s/g, "");
 
+  if (!/^[6-9]\d{9}$/.test(cleanedPhone)) {
+    return false;
+  }
+
+  if (/^(\d)\1{9}$/.test(cleanedPhone)) {
+    return false;
+  }
+
+  return true;
+}
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = "index.html";
@@ -29,7 +41,12 @@ onAuthStateChanged(auth, async (user) => {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!currentUser) return;
+const phone = document.getElementById("phone").value.trim();
 
+if (!validatePhone(phone)) {
+  msg.textContent = "Please enter a valid 10-digit Indian mobile number.";
+  return;
+}
   btn.disabled = true;
   msg.textContent = "Saving...";
 
