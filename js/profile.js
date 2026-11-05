@@ -8,7 +8,35 @@ import {
   where,
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { auth, db } from "./firebase.js";
+import { deleteUser } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+const deleteBtn = document.getElementById("deleteAccountBtn");
+const deleteMsg = document.getElementById("deleteMsg");
+
+deleteBtn.addEventListener("click", async () => {
+  if (!confirm("Delete your account permanently? This cannot be undone.")) return;
+
+  const user = auth.currentUser;
+  if (!user) return;
+
+  deleteBtn.disabled = true;
+  deleteMsg.textContent = "Deleting...";
+
+  try {
+    await deleteDoc(doc(db, "users", user.uid)); // profile first
+    await deleteUser(user);                      // then the login
+    window.location.href = "index.html";
+  } catch (err) {
+    console.error(err);
+    deleteBtn.disabled = false;
+    deleteMsg.textContent =
+      err.code === "auth/requires-recent-login"
+        ? "For security, please log out, log in again, then delete your account."
+        : "Could not delete (" + (err.code || err.message) + ").";
+  }
+});
 const header = document.getElementById("profileHeader");
 const details = document.getElementById("profileDetails");
 const itemsSection = document.getElementById("myItemsSection");
